@@ -372,51 +372,46 @@
 
 </style>
 
-<style>
-/* Split edition: private product app */
-#growthStory,#aboutLing{display:none!important}
-</style>
 
 
+
+
+
+<script src="config.js"></script>
+
 <style>
-.v9-access{position:fixed;inset:0;z-index:20000;background:linear-gradient(155deg,#f7efe9,#ead7ca);display:flex;align-items:center;justify-content:center;padding:22px}
-.v9-access.hidden{display:none}
-.v9-login-card{width:min(100%,430px);background:rgba(255,252,249,.94);border:1px solid rgba(137,99,82,.14);border-radius:32px;padding:35px 25px 28px;box-shadow:0 30px 80px rgba(75,51,43,.16);text-align:center}
-.v9-logo{width:78px;height:78px;border-radius:24px;margin:0 auto 17px;display:flex;align-items:center;justify-content:center;background:#d6ad91;color:#fff;font:25px Georgia,serif;letter-spacing:.05em}
-.v9-kicker{font-size:10px;letter-spacing:.2em;font-weight:900;color:#a27664}
-.v9-login-card h1{font-family:"Noto Serif TC","Songti TC",serif;color:#45352f;font-size:31px;margin:12px 0}
-.v9-login-card p{font-size:14px;line-height:1.8;color:#7a665f;margin:0 0 25px}
-.v9-login-card label{display:block;text-align:left;font-size:12px;font-weight:900;color:#604b43;margin:0 0 8px}
-.v9-login-card input{width:100%;box-sizing:border-box;border:1px solid #decfc7;background:#fff;border-radius:15px;padding:15px 14px;font-size:16px;text-align:center;letter-spacing:.08em;outline:none}
-.v9-unlock{width:100%;border:0;border-radius:15px;background:#8e685a;color:#fff;font-size:15px;font-weight:900;padding:15px;margin-top:11px}
-.v9-msg{min-height:20px;font-size:12px;color:#a15f50;margin:9px 0}
-.v9-buy{display:block;text-decoration:none;color:#8e685a;font-weight:800;font-size:13px;margin:12px 0 7px}
-.v9-login-card small{font-size:10px;color:#a28f87}
-.v9-logout{position:fixed;right:14px;top:14px;z-index:9000;border:1px solid #e2d4ce;background:rgba(255,250,247,.9);color:#8d7167;border-radius:999px;padding:8px 12px;font-size:11px;display:none}
-.v9-logout.show{display:block}
+.member-gate{position:fixed;inset:0;z-index:25000;background:linear-gradient(155deg,#f7efe9,#ead7ca);display:flex;align-items:center;justify-content:center;padding:22px}
+.member-gate.hidden{display:none}
+.member-card{width:min(100%,430px);background:rgba(255,252,249,.96);border:1px solid rgba(137,99,82,.14);border-radius:32px;padding:38px 25px 31px;box-shadow:0 30px 80px rgba(75,51,43,.16);text-align:center}
+.member-logo{width:80px;height:80px;border-radius:24px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;background:#d6ad91;color:#fff;font:25px Georgia,serif;letter-spacing:.05em}
+.member-kicker{font-size:10px;letter-spacing:.2em;font-weight:900;color:#a27664}
+.member-card h1{font-family:"Noto Serif TC","Songti TC",serif;color:#45352f;font-size:31px;margin:12px 0}
+.member-card p{font-size:14px;line-height:1.8;color:#7a665f;margin:0 0 27px}
+.member-card label{display:block;text-align:left;font-size:12px;font-weight:900;color:#604b43;margin:0 0 8px}
+.member-card input{width:100%;box-sizing:border-box;border:1px solid #decfc7;background:#fff;border-radius:15px;padding:15px 14px;font-size:16px;text-align:center;letter-spacing:.08em;outline:none}
+.member-unlock{width:100%;border:0;border-radius:15px;background:#8e685a;color:#fff;font-size:15px;font-weight:900;padding:15px;margin-top:11px}
+.member-msg{min-height:20px;font-size:12px;color:#a15f50;margin-top:10px;line-height:1.5}
+.member-logout{position:fixed;right:14px;top:14px;z-index:9000;border:1px solid #e2d4ce;background:rgba(255,250,247,.92);color:#8d7167;border-radius:999px;padding:8px 12px;font-size:11px;display:none}
+.member-logout.show{display:block}
 </style>
 
 </head>
 <body>
 
-<div id="v9Access" class="v9-access">
-  <div class="v9-login-card">
-    <div class="v9-logo">LING</div>
-    <div class="v9-kicker">MEMBER ACCESS</div>
+<div id="memberGate" class="member-gate">
+  <div class="member-card">
+    <div class="member-logo">LING</div>
+    <div class="member-kicker">MEMBER ACCESS</div>
     <h1>歡迎回來 🤍</h1>
-    <p>這裡是 LING 品牌工具的付費使用區。<br>完成購買後，輸入伊玲提供的使用序號即可開始。</p>
+    <p>輸入你的專屬使用序號，驗證完成後即可進入品牌工具。</p>
 
-    <label for="v9Code">專屬使用序號</label>
-    <input id="v9Code" type="text" autocomplete="off" placeholder="例如：LING-XXXX-XXXX">
-    <button class="v9-unlock" onclick="v9Unlock()">解鎖我的品牌工具 →</button>
-    <div id="v9Msg" class="v9-msg"></div>
-
-    <a class="v9-buy" href="https://line.me/ti/p/Vfr2_tJJK7">還沒有序號？前往 LINE 購買</a>
-    <small>首發 NT$899｜原價 NT$1,299</small>
+    <label for="memberCode">專屬使用序號</label>
+    <input id="memberCode" type="text" autocomplete="off" placeholder="LING-XXXX-XXXX">
+    <button class="member-unlock" onclick="memberUnlock()">進入 LING →</button>
+    <div id="memberMsg" class="member-msg"></div>
   </div>
 </div>
-
-<button id="v9Logout" class="v9-logout" onclick="v9Logout()" title="登出">登出</button>
+<button id="memberLogout" class="member-logout" onclick="memberLogout()">登出</button>
 
 
 <div id="welcome" class="welcome">
@@ -435,7 +430,7 @@
   </header>
 
   
-<section id="home" class="page">
+<section id="home" class="page active">
   <div class="personal-home">
     <div class="personal-kicker">ABOUT LING · 關於我</div>
     <div class="personal-mark">LING</div>
@@ -466,7 +461,7 @@
       <p>如果你也正在找自己的方向，<br><b>那我們一起邊走、邊找到答案。</b> 🤍</p>
     </div>
 
-    <button class="cta" onclick="go('growthStory')">從我的成長，看看這套工具 →</button>
+    <button class="cta" onclick="go('quiz')">開始找到我的品牌 →</button>
     <button class="cta ghost" onclick="go('quiz')">直接開始找我的品牌</button>
     <div class="signature">@ling_02_02 · 找到更好的自己</div>
   </div>
@@ -669,91 +664,6 @@
 
 
   
-<section id="growthStory" class="page active">
-  <div class="sales-story">
-
-    <div class="sales-section">
-      <div class="sales-kicker">不是突然變厲害，是慢慢找到方法</div>
-      <h1 class="sales-title">從輪播幾乎沒人看，<br>到現在每一篇<br>都慢慢翻了好幾倍。</h1>
-      <p class="sales-copy">剛開始經營 IG 的時候，我也不是一發文就有人看。做了很多內容、花很多時間排版，發出去卻只有一點點觀看，甚至會開始懷疑：<b>是不是我的內容根本沒有人想看？</b></p>
-      <p class="sales-copy">但我沒有停在「是不是我不適合」這件事上，而是開始重新研究定位、內容結構、前三秒、受眾到底在意什麼。</p>
-
-      <div class="growth-highlight">
-        <span>CONTENT GROWTH</span>
-        <strong>從沒人看 → 慢慢翻好幾倍</strong>
-        <p>當定位越來越清楚，輪播的觸及、互動開始增加，粉絲數也跟著慢慢往上走。</p>
-      </div>
-
-      <div class="mini-note">我不是因為一開始就很會，<br>而是做了之後，才慢慢知道怎麼做得更好。</div>
-    </div>
-
-    <div class="sales-section pain-bg">
-      <div class="sales-kicker">這套工具，是寫給正在卡住的你</div>
-      <h2 class="sales-title small">你是不是也<br>遇過這些狀況？</h2>
-      <div class="sales-pains">
-        <div><b>01</b><span>想開始經營 IG，卻每天都在想「我到底可以發什麼？」</span></div>
-        <div><b>02</b><span>明明很認真做內容，發出去卻沒什麼人看，也不知道問題在哪。</span></div>
-        <div><b>03</b><span>問 ChatGPT 一堆問題，答案看起來都很完整，卻怎麼看都不像自己。</span></div>
-        <div><b>04</b><span>什麼都想分享，結果帳號看起來很散，別人進首頁還是不知道你是誰。</span></div>
-        <div><b>05</b><span>想做副業、經營個人品牌，卻覺得自己「沒有專長、沒有特色」。</span></div>
-        <div><b>06</b><span>已經經營一段時間，卻越做越沒靈感，不知道下一篇還能說什麼。</span></div>
-      </div>
-      <div class="sales-quote">你不是沒有內容，<br><b>你只是還沒有把自己整理成「別人看得懂的品牌」。</b></div>
-    </div>
-
-    <div class="sales-section">
-      <div class="sales-kicker">這套工具可以帶給你什麼？</div>
-      <h2 class="sales-title small">不是再給你一堆答案，<br>而是幫你找到<br>屬於自己的答案。</h2>
-      <div class="gain-grid">
-        <div><i>✦</i><b>找到個人定位</b><span>整理你的經歷、個性、價值觀與優勢。</span></div>
-        <div><i>✦</i><b>找到內容方向</b><span>建立內容支柱，不再每天從零想題材。</span></div>
-        <div><i>✦</i><b>更懂你的受眾</b><span>知道你在跟誰說話，以及他們為什麼留下。</span></div>
-        <div><i>✦</i><b>讓內容更好看懂</b><span>從前三秒、CTA 到短影音題材，降低創作卡關。</span></div>
-        <div><i>✦</i><b>優化 IG 首頁</b><span>BIO 人格分析＋黃金 4 行，讓別人快速認識你。</span></div>
-        <div><i>✦</i><b>建立自己的品牌</b><span>不需要複製別人，也能長出自己的辨識度。</span></div>
-      </div>
-    </div>
-
-    <div class="sales-section audience-bg">
-      <div class="sales-kicker">適合你，如果你是</div>
-      <h2 class="sales-title small">想開始改變，<br>卻不知道第一步<br>該往哪裡走的人。</h2>
-      <div class="audience-list">
-        <div><em>01</em><span><b>自媒體新手</b><small>想經營 IG，但不知道從哪裡開始。</small></span></div>
-        <div><em>02</em><span><b>正在卡定位的人</b><small>發了很多內容，帳號卻還是沒有明確方向。</small></span></div>
-        <div><em>03</em><span><b>上班族／想發展副業的人</b><small>想慢慢累積真正屬於自己的能力與資產。</small></span></div>
-        <div><em>04</em><span><b>美業、生活、自媒體創作者</b><small>想讓內容不只好看，而是真的吸引對的人。</small></span></div>
-        <div><em>05</em><span><b>覺得自己「沒特色」的人</b><small>想重新看見自己的經歷其實很有價值。</small></span></div>
-      </div>
-    </div>
-
-    <div class="sales-section price-section">
-      <div class="price-badge">首發限定</div>
-      <div class="price-now">NT$899</div>
-      <div class="price-original">原價 <s>NT$1,299</s>・現省 NT$400</div>
-
-      <div class="price-card">
-        <div>✓ 個人品牌定位＋創作者人格</div>
-        <div>✓ 品牌完成度＋內容方向分析</div>
-        <div>✓ 短影音題材＋爆款前三秒</div>
-        <div>✓ 7 天企劃＋30 天內容地圖</div>
-        <div>✓ IG BIO 人格分析＋黃金 4 行</div>
-        <div>✓ CTA、IG 健檢與變現方向</div>
-        <div>✓ 一次買斷・持續更新</div>
-      </div>
-
-      <p class="price-message">如果你也不想再一直站在原地想「我到底能做什麼」，<br><b>這一次，先從看懂自己開始。</b></p>
-
-      <a class="line-buy" id="lineBuyBtn" href="#" onclick="return openLinePurchase();">
-        <span class="line-circle">LINE</span>
-        <span><b>確認購買・前往 LINE</b><small>付款後取得完整使用權</small></span>
-      </a>
-      <p class="line-hint">※ LINE 連結可在程式內替換成你的官方 LINE 網址</p>
-
-      <div class="sales-signoff">LING · 找到更好的自己 🤍</div>
-    </div>
-  </div>
-</section>
-
 <section id="bioLab" class="page">
     <div class="section-head">
       <h2>BIO 人格分析</h2>
@@ -843,74 +753,6 @@
   </section>
 
 
-  <section id="aboutLing" class="page">
-    <div class="landing-wrap">
-      <div class="landing-section intro-section">
-        <div class="eyebrow">關於這份工具</div>
-        <div class="ling-avatar">LING</div>
-        <h1 class="editorial-title">我不是一開始<br>就知道自己要做什麼</h1>
-        <p class="landing-copy">我也曾經把「工作」當成自己的全部。換過不同環境、做過不同選擇，直到後來才慢慢發現：<b>真正能帶走的，不只是職稱，而是你一路累積下來的故事、能力與想法。</b></p>
-        <p class="landing-copy">開始經營自媒體後，我也不是突然就會定位、會剪輯、會寫內容。很多東西都是一邊做、一邊跌倒，再一邊把方法整理出來。</p>
-        <div class="quote-card">「沒有白走的路。過去所有的積累，都會在新的舞台上加倍回饋給你。」</div>
-      </div>
-
-      <div class="landing-section">
-        <div class="eyebrow">為什麼做這個工具</div>
-        <h2 class="editorial-title small">我以前也以為<br>「我好像沒什麼特別」</h2>
-        <p class="landing-copy">但後來我發現，很多人不是沒有特色，而是<b>太習慣自己的人生，所以看不見自己的價值。</b></p>
-        <div class="pain-grid">
-          <div class="pain-card"><span>01</span><p>想經營自媒體，卻不知道自己到底適合分享什麼。</p></div>
-          <div class="pain-card"><span>02</span><p>問 AI 得到一堆答案，但看起來很制式，完全不像自己。</p></div>
-          <div class="pain-card"><span>03</span><p>拍了一段時間，題材越來越乾，開始懷疑是不是自己沒天份。</p></div>
-          <div class="pain-card"><span>04</span><p>IG 有內容，觀眾進到首頁卻還是不知道「為什麼要追蹤你」。</p></div>
-        </div>
-      </div>
-
-      <div class="landing-section warm-section">
-        <div class="eyebrow">這份工具在做什麼</div>
-        <h2 class="editorial-title small">不是把你變成別人<br>而是把「你」整理清楚</h2>
-        <p class="landing-copy">我把自己經營內容時最常反覆思考的問題，整理成一套可以直接操作的流程。從你的<b>經歷、個性、價值觀、受眾、內容方向</b>開始，一步步拼出專屬於你的品牌輪廓。</p>
-        <div class="benefit-card green"><b>✓ 找到你是誰</b><span>把經歷與個性整理成有辨識度的創作者人格</span></div>
-        <div class="benefit-card blue"><b>✓ 找到你能幫誰</b><span>不再對所有人說話，而是知道你的內容真正想陪伴誰</span></div>
-        <div class="benefit-card peach"><b>✓ 找到你可以說什麼</b><span>從內容支柱延伸題材，讓你不再每次發文都從零開始</span></div>
-        <div class="benefit-card rose"><b>✓ 把首頁變得更會轉粉</b><span>BIO 人格分析＋IG 黃金 4 行，讓別人一進來就看懂你</span></div>
-      </div>
-
-      <div class="landing-section">
-        <div class="eyebrow">怎麼使用</div>
-        <h2 class="editorial-title small">幾個小步驟<br>全程手機就能完成</h2>
-        <div class="steps">
-          <div class="step"><i>1</i><div><b>完成你的品牌定位</b><p>跟著問題填寫，不需要一次就想得很完美。</p></div></div>
-          <div class="step"><i>2</i><div><b>看懂你的創作者人格</b><p>整理「你是誰、你幫誰、你說什麼」，找到最適合你的表達方式。</p></div></div>
-          <div class="step"><i>3</i><div><b>直接拿內容工具開始做</b><p>從題材、前三秒、7 天企劃到 30 天內容地圖，把想法變成行動。</p></div></div>
-          <div class="step"><i>4</i><div><b>最後優化你的 IG BIO</b><p>用黃金 4 行公式，讓首頁不只是介紹你，而是讓對的人留下來。</p></div></div>
-        </div>
-      </div>
-
-      <div class="landing-section">
-        <div class="eyebrow">適合你，如果你是</div>
-        <h2 class="editorial-title small">正在找方向的<br>這五種人</h2>
-        <div class="who-list">
-          <div><em>1</em><span>完全零經驗，卻很想開始經營自媒體</span></div>
-          <div><em>2</em><span>上班族，想把下班後的時間慢慢變成自己的資產</span></div>
-          <div><em>3</em><span>已經開始經營，但定位一直改、內容很容易卡住</span></div>
-          <div><em>4</em><span>有產品／副業，卻不想讓自己的帳號只剩下「賣東西」</span></div>
-          <div><em>5</em><span>想建立有個性、有溫度，也真正像自己的個人品牌</span></div>
-        </div>
-      </div>
-
-      <div class="landing-section final-section">
-        <span class="spark">✦</span>
-        <div class="eyebrow">LING BRAND LAB</div>
-        <h2 class="editorial-title small">你不需要先變得很厲害<br>才有資格開始</h2>
-        <p class="landing-copy center">你的經歷、你在意的事、你走過的路，本來就可以成為內容。<br><b>先找到自己，再讓對的人找到你。</b></p>
-        <button class="cta landing-cta" onclick="go('growthStory')">看看這套工具適不適合我 →</button>
-        <button class="cta ghost" onclick="go('bioLab')">先分析我的 IG BIO</button>
-        <div class="signature">@ling_02_02 · 把真實活成自己的品牌</div>
-      </div>
-    </div>
-  </section>
-
   <section id="profile" class="page">
     <div class="section-head">
       <h2>我的品牌檔案</h2>
@@ -929,8 +771,6 @@
     <button data-page="tools" onclick="go('tools')"><span class="icon">▦</span>工具</button>
     <button data-page="planner" onclick="go('planner')"><span class="icon">◫</span>30天</button>
     <button data-page="bioLab" onclick="go('bioLab')"><span class="icon">✎</span>BIO</button>
-    <button data-page="growthStory" onclick="go('growthStory')"><span class="icon">♡</span>適合誰</button>
-    <button data-page="aboutLing" onclick="go('aboutLing')"><span class="icon">✦</span>介紹</button>
     <button data-page="profile" onclick="go('profile')"><span class="icon">☺</span>我的</button>
   </nav>
 </div>
@@ -1375,65 +1215,96 @@ updateProgress();
 render30Days();
 </script>
 
-<script>
-function openLinePurchase(){
-  const LINE_PURCHASE_URL = "https://line.me/ti/p/Vfr2_tJJK7";
-  window.location.href = LINE_PURCHASE_URL;
-  return false;
-}
-</script>
+
+
+
+
 
 
 
 
 
 <script>
-const V9_STORAGE_KEY = "lingV9Access";
-const V9_CODES = [
-  "LING-899-A001",
-  "LING-899-A002",
-  "LING-899-A003",
-  "LING-899-A004",
-  "LING-899-A005",
-  "LING-899-A006",
-  "LING-899-A007",
-  "LING-899-A008",
-  "LING-899-A009",
-  "LING-899-A010"
-];
+const MEMBER_SESSION_KEY = "lingMemberSessionV10";
+const MEMBER_DEVICE_KEY = "lingMemberDeviceV10";
 
-function v9IsUnlocked(){
-  return localStorage.getItem(V9_STORAGE_KEY) === "granted";
+function memberConfigReady(){
+  return window.LING_CONFIG &&
+    /^https:\/\/.+\.supabase\.co$/.test(window.LING_CONFIG.supabaseUrl || "") &&
+    (window.LING_CONFIG.supabaseAnonKey || "").length > 30;
 }
-function v9RefreshAccess(){
-  const gate=document.getElementById("v9Access");
-  const logout=document.getElementById("v9Logout");
-  if(v9IsUnlocked()){
-    gate?.classList.add("hidden");
-    logout?.classList.add("show");
-  }else{
-    gate?.classList.remove("hidden");
-    logout?.classList.remove("show");
+
+function memberDeviceId(){
+  let id = localStorage.getItem(MEMBER_DEVICE_KEY);
+  if(!id){
+    id = (crypto.randomUUID ? crypto.randomUUID() : "dev-"+Date.now()+"-"+Math.random().toString(36).slice(2));
+    localStorage.setItem(MEMBER_DEVICE_KEY,id);
+  }
+  return id;
+}
+
+async function memberRpc(fn, payload){
+  const c=window.LING_CONFIG;
+  const res=await fetch(c.supabaseUrl + "/rest/v1/rpc/" + fn,{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      "apikey":c.supabaseAnonKey,
+      "Authorization":"Bearer "+c.supabaseAnonKey
+    },
+    body:JSON.stringify(payload)
+  });
+  if(!res.ok) throw new Error("驗證服務暫時無法連線");
+  return await res.json();
+}
+
+function memberSetState(ok){
+  document.getElementById("memberGate")?.classList.toggle("hidden",ok);
+  document.getElementById("memberLogout")?.classList.toggle("show",ok);
+}
+
+async function memberUnlock(){
+  const code=(document.getElementById("memberCode")?.value||"").trim().toUpperCase();
+  const msg=document.getElementById("memberMsg");
+  if(!memberConfigReady()){
+    msg.textContent="尚未連接會員驗證資料庫，請先完成 V10 設定。";
+    return;
+  }
+  if(!code){ msg.textContent="請輸入使用序號。"; return; }
+  msg.textContent="驗證中…";
+  try{
+    const result=await memberRpc("claim_ling_license",{p_code:code,p_device_id:memberDeviceId()});
+    if(result && result.ok){
+      localStorage.setItem(MEMBER_SESSION_KEY,JSON.stringify({code,deviceId:memberDeviceId()}));
+      msg.textContent="驗證成功 🤍";
+      setTimeout(()=>memberSetState(true),250);
+    }else{
+      msg.textContent=(result && result.message) || "序號無法使用，請聯繫伊玲。";
+    }
+  }catch(e){
+    msg.textContent=e.message || "驗證失敗，請稍後再試。";
   }
 }
-function v9Unlock(){
-  const code=(document.getElementById("v9Code")?.value || "").trim().toUpperCase();
-  const msg=document.getElementById("v9Msg");
-  if(V9_CODES.includes(code)){
-    localStorage.setItem(V9_STORAGE_KEY,"granted");
-    localStorage.setItem("lingV9Code",code);
-    if(msg) msg.textContent="驗證成功，歡迎加入 LING 🤍";
-    setTimeout(v9RefreshAccess,350);
-  }else{
-    if(msg) msg.textContent="序號不正確，請確認後再輸入，或透過 LINE 聯繫伊玲。";
+
+async function memberValidateSaved(){
+  const raw=localStorage.getItem(MEMBER_SESSION_KEY);
+  if(!raw || !memberConfigReady()){ memberSetState(false); return; }
+  try{
+    const s=JSON.parse(raw);
+    const result=await memberRpc("validate_ling_license",{p_code:s.code,p_device_id:memberDeviceId()});
+    if(result && result.ok){ memberSetState(true); }
+    else{ localStorage.removeItem(MEMBER_SESSION_KEY); memberSetState(false); }
+  }catch(e){
+    memberSetState(false);
   }
 }
-function v9Logout(){
-  localStorage.removeItem(V9_STORAGE_KEY);
-  localStorage.removeItem("lingV9Code");
-  v9RefreshAccess();
+
+function memberLogout(){
+  localStorage.removeItem(MEMBER_SESSION_KEY);
+  memberSetState(false);
 }
-document.addEventListener("DOMContentLoaded",v9RefreshAccess);
+
+document.addEventListener("DOMContentLoaded",memberValidateSaved);
 </script>
 
 </body>
