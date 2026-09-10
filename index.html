@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#f5efeb" />
-  <title>LING BRAND LAB V5｜個人品牌定位工具</title>
+  <title>LING BRAND LAB V6｜個人品牌定位工具</title>
   <style>
     :root{
       --bg:#f7f2ee;
@@ -127,7 +127,7 @@
     .bottom-nav{
       position:fixed;bottom:0;left:0;right:0;z-index:40;
       max-width:760px;margin:auto;
-      display:grid;grid-template-columns:repeat(5,1fr);
+      display:grid;grid-template-columns:repeat(6,1fr);
       background:rgba(255,253,251,.97);backdrop-filter:blur(16px);
       border-top:1px solid var(--line);padding:8px 6px calc(8px + env(safe-area-inset-bottom))
     }
@@ -168,7 +168,7 @@
 
 <div id="welcome" class="welcome">
   <div class="welcome-inner">
-    <div class="welcome-mark">LING BRAND LAB · V5</div>
+    <div class="welcome-mark">LING BRAND LAB · V6</div>
     <h2>你不是沒有特色，<br>只是還沒把自己整理成品牌。</h2>
     <p>用幾分鐘找出你的創作者人格、內容支柱與最適合你的內容路線。</p>
     <button class="cta" onclick="closeWelcome()">開始探索我的品牌 →</button>
@@ -177,7 +177,7 @@
 
 <div class="app">
   <header class="topbar">
-    <div class="brand">LING BRAND LAB · V5</div>
+    <div class="brand">LING BRAND LAB · V6</div>
     <div class="tiny">@ling_02_02</div>
   </header>
 
@@ -194,6 +194,8 @@
       <div class="feature"><b>品牌完成度</b><span>看見目前最需要補強的定位環節。</span></div>
       <div class="feature"><b>內容雷達</b><span>分析故事力、專業力、共感力與吸睛力。</span></div>
       <div class="feature"><b>30 天題庫</b><span>依照你的內容支柱直接生成題目。</span></div>
+      <div class="feature"><b>BIO 人格分析</b><span>用 IG 黃金 4 行公式分析自介，找出轉粉卡點。</span></div>
+      <div class="feature"><b>BIO 優化器</b><span>依照創作者人格、受眾與內容支柱生成新版自介。</span></div>
     </div>
 
     <button class="cta" onclick="go('quiz')">開始定位測驗 →</button>
@@ -375,6 +377,9 @@
       <button class="tool locked" onclick="buildMonetization()">
         <span class="emoji">💰</span><b>變現方向建議</b><span>依照你的定位推薦可發展產品。</span>
       </button>
+      <button class="tool" onclick="go('bioLab')">
+        <span class="emoji">🪪</span><b>BIO 人格分析</b><span>分析 IG 黃金 4 行與轉粉力。</span>
+      </button>
     </div>
 
     <div id="toolOutput" class="result-card hidden">
@@ -390,6 +395,95 @@
     </div>
     <div id="calendarGrid" class="calendar-grid"></div>
     <button class="cta secondary" onclick="render30Days()">重新生成 30 天</button>
+  </section>
+
+
+  <section id="bioLab" class="page">
+    <div class="section-head">
+      <h2>BIO 人格分析</h2>
+      <p>你的 IG 自介不是履歷，而是觀眾進主頁後，幾秒內決定「要不要追蹤你」的門面。</p>
+    </div>
+
+    <div class="card">
+      <span class="badge">IG 黃金 4 行公式</span>
+      <label>貼上你目前的 IG BIO</label>
+      <textarea id="currentBio" style="min-height:150px" placeholder="例如：
+護理師轉型自媒體創作者
+分享自媒體成長｜情侶｜變美日常
+不喝咖啡只喝奶茶 ☕️
+👇 免費領取個人品牌定位工具"></textarea>
+      <div class="notice">建議依照 IG 顯示方式換行貼上，分析會更準確。</div>
+      <button class="cta" onclick="analyzeBio()">分析我的 BIO →</button>
+    </div>
+
+    <div id="bioResult" class="hidden">
+      <div class="result-hero">
+        <div class="kicker">BIO PERSONALITY REPORT</div>
+        <h2 id="bioPersonality"></h2>
+      </div>
+
+      <div class="result-card">
+        <h3>BIO 完成度</h3>
+        <div class="score-big"><span id="bioScore">0</span>%</div>
+        <div class="progress"><div id="bioScoreBar" style="width:0%"></div></div>
+        <p id="bioScoreDesc"></p>
+      </div>
+
+      <div class="result-card">
+        <h3>① 你是誰？｜身份＋成果</h3>
+        <p id="bioLine1"></p>
+      </div>
+      <div class="result-card">
+        <h3>② 你能提供什麼價值？</h3>
+        <p id="bioLine2"></p>
+      </div>
+      <div class="result-card">
+        <h3>③ 人設溫度</h3>
+        <p id="bioLine3"></p>
+      </div>
+      <div class="result-card">
+        <h3>④ 行動呼籲 CTA</h3>
+        <p id="bioLine4"></p>
+      </div>
+
+      <div class="result-card">
+        <h3>你的 BIO 人格</h3>
+        <p id="bioPersonaDetail"></p>
+      </div>
+
+      <div class="result-card">
+        <h3>最需要先修改的地方</h3>
+        <p id="bioPriority"></p>
+      </div>
+
+      <div class="result-card">
+        <h3>✨ 黃金 4 行優化版</h3>
+        <p id="optimizedBio" style="font-size:16px;font-weight:700"></p>
+      </div>
+
+      <button class="cta secondary" onclick="copyOptimizedBio()">一鍵複製優化 BIO</button>
+      <button class="cta ghost" onclick="generateBioVersions()">再生成 3 種風格</button>
+
+      <div id="bioVersions" class="hidden">
+        <div class="result-card"><h3>專業結果型</h3><p id="bioProfessional"></p></div>
+        <div class="result-card"><h3>真實共感型</h3><p id="bioWarm"></p></div>
+        <div class="result-card"><h3>吸睛記憶型</h3><p id="bioCatchy"></p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0">IG 黃金 4 行公式</h3>
+      <p style="line-height:1.9;color:var(--muted)">
+        <b style="color:var(--text)">第一行｜你是誰？</b><br>
+        不只寫職業，而是「身份＋經歷／成果」，讓人知道為什麼值得聽你說。<br><br>
+        <b style="color:var(--text)">第二行｜你能提供什麼價值？</b><br>
+        清楚說明追蹤你之後，可以得到什麼。<br><br>
+        <b style="color:var(--text)">第三行｜增加人設溫度</b><br>
+        加入反差、興趣、小習慣或個性，讓自介不像公司簡介。<br><br>
+        <b style="color:var(--text)">第四行｜CTA</b><br>
+        明確告訴觀眾下一步：領取、留言、私訊或點連結。
+      </p>
+    </div>
   </section>
 
   <section id="profile" class="page">
@@ -409,20 +503,21 @@
     <button data-page="quiz" onclick="go('quiz')"><span class="icon">✦</span>定位</button>
     <button data-page="tools" onclick="go('tools')"><span class="icon">▦</span>工具</button>
     <button data-page="planner" onclick="go('planner')"><span class="icon">◫</span>30天</button>
+    <button data-page="bioLab" onclick="go('bioLab')"><span class="icon">✎</span>BIO</button>
     <button data-page="profile" onclick="go('profile')"><span class="icon">☺</span>我的</button>
   </nav>
 </div>
 
 <script>
 let currentStep=1;
-const ids=["name","identity","story","traits","values","style","audience","problem","transformation","topics","format","goal","ctaGoal"];
+const ids=["name","identity","story","traits","values","style","audience","problem","transformation","topics","format","goal","ctaGoal","currentBio"];
 
 function closeWelcome(){
-  localStorage.setItem('lingV5Welcome','1');
+  localStorage.setItem('lingV6Welcome','1');
   document.getElementById('welcome').classList.add('hide');
   setTimeout(()=>document.getElementById('welcome').style.display='none',350);
 }
-if(localStorage.getItem('lingV5Welcome')){
+if(localStorage.getItem('lingV6Welcome')){
   document.getElementById('welcome').style.display='none';
 }
 
@@ -661,6 +756,130 @@ function render30Days(){
     grid.appendChild(d);
   });
 }
+
+function bioHas(text,regex){return regex.test(text)}
+function analyzeBio(){
+  const raw=v('currentBio','');
+  if(!raw){alert('先貼上你目前的 IG BIO，我才能幫你分析。');return;}
+  saveData();
+
+  const lines=raw.split(/\n+/).map(x=>x.trim()).filter(Boolean);
+  const full=lines.join(' ');
+  const l1=lines[0]||'', l2=lines[1]||'', l3=lines[2]||'', l4=lines.slice(3).join(' ')||'';
+
+  let s1=0,s2=0,s3=0,s4=0;
+
+  // Line 1: identity + credibility/results
+  if(l1.length>=4)s1+=25;
+  if(bioHas(l1,/創作者|護理|設計|攝影|剪輯|行銷|教練|顧問|老師|品牌|自媒體|業務|學生|闆娘|創業|導演/))s1+=30;
+  if(bioHas(l1,/\d|年|萬|品牌|轉型|經歷|幫助|操作|累積|合作|從.+到/))s1+=30;
+  if(l1.length>=8 && l1.length<=35)s1+=15;
+  s1=Math.min(100,s1);
+
+  // Line 2: value
+  if(l2.length>=5)s2+=20;
+  if(bioHas(l2,/教你|陪你|幫你|分享|讓你|帶你|打造|提升|學會|省下|從.+到/))s2+=40;
+  if(bioHas(l2,/內容|品牌|短影音|剪輯|成長|變美|情侶|理財|行銷|流量|自媒體|保養/))s2+=25;
+  if(bioHas(l2,/\d|零基礎|新手|每天|快速|簡單/))s2+=15;
+  s2=Math.min(100,s2);
+
+  // Line 3: warmth
+  if(l3.length>=3)s3+=20;
+  if(bioHas(l3,/喜歡|愛|不喝|只喝|日常|ENFP|水瓶|貓|奶茶|音樂|吃|旅行|反差|女孩|人|☕|🧋|🐱|♡|🤍|✨|😂/i))s3+=50;
+  if(!bioHas(l3,/教你|幫你|服務|專業|諮詢/) && l3.length>=5)s3+=30;
+  s3=Math.min(100,s3);
+
+  // Line 4: CTA
+  const ctaText=l4 || lines[lines.length-1] || '';
+  if(ctaText.length>=3)s4+=20;
+  if(bioHas(ctaText,/點|領取|免費|私訊|留言|下載|連結|諮詢|加入|看完整|立即|⬇|👇|link/i))s4+=60;
+  if(bioHas(ctaText,/模板|工具|懶人包|教學|定位|社群|課程|合作/))s4+=20;
+  s4=Math.min(100,s4);
+
+  const total=Math.round((s1+s2+s3+s4)/4);
+  document.getElementById('bioScore').textContent=total;
+  document.getElementById('bioScoreBar').style.width=total+'%';
+  document.getElementById('bioScoreDesc').textContent =
+    total>=85?'你的 BIO 結構很完整，接下來重點是把文字變得更有辨識度。':
+    total>=65?'已經有基本架構，但仍有一兩行沒有把價值說滿。':
+    total>=45?'觀眾大概知道你是誰，但「為什麼要追蹤」還不夠明確。':
+    '目前比較像自我介紹，還沒有形成能幫你轉粉的 BIO。';
+
+  const evalLine=(score,good,fix)=>score>=70?`${score} 分｜✓ ${good}`:`${score} 分｜△ ${fix}`;
+  document.getElementById('bioLine1').textContent=evalLine(s1,'身份與可信度清楚。','不要只放職稱，補上經歷、成果或轉變，增加「為什麼值得聽你說」的理由。');
+  document.getElementById('bioLine2').textContent=evalLine(s2,'觀眾能快速理解追蹤你的價值。','把「我分享什麼」改成「你追蹤我能得到什麼」，價值會更直接。');
+  document.getElementById('bioLine3').textContent=evalLine(s3,'有個人味，不會像公司簡介。','補一個反差、興趣、小習慣或個性標籤，增加記憶點。');
+  document.getElementById('bioLine4').textContent=evalLine(s4,'下一步行動清楚。','直接下指令，例如「👇免費領取定位工具」或「私訊我聊品牌定位」。');
+
+  let persona='';
+  if(s2>=75 && s1>=70) persona='專業價值型';
+  else if(s3>=75) persona='真實親近型';
+  else if(s4>=75) persona='行動轉換型';
+  else persona='生活自介型';
+  document.getElementById('bioPersonality').textContent=persona;
+  const personaMap={
+    '專業價值型':'你的自介擅長建立專業感與可信度。下一步不要再塞更多頭銜，而是補一點「人味」，讓觀眾除了相信你，也想認識你。',
+    '真實親近型':'你的自介很有人味，容易讓人覺得親近。下一步要補強「追蹤你到底能得到什麼」，避免只有可愛、沒有轉粉理由。',
+    '行動轉換型':'你很清楚要觀眾做下一步。接下來要確認前 3 行已經先建立足夠的身份、價值與信任，不然 CTA 會太快。',
+    '生活自介型':'目前比較像在介紹自己，而不是「為觀眾設計的首頁入口」。優先補上價值句與 CTA，轉粉力會差很多。'
+  };
+  document.getElementById('bioPersonaDetail').textContent=personaMap[persona];
+
+  const scores=[['第一行身份成果',s1],['第二行價值',s2],['第三行人設溫度',s3],['第四行 CTA',s4]].sort((a,b)=>a[1]-b[1]);
+  document.getElementById('bioPriority').textContent=`最先改：${scores[0][0]}（${scores[0][1]} 分）\n第二優先：${scores[1][0]}（${scores[1][1]} 分）`;
+
+  const optimized=makeOptimizedBio('balanced');
+  document.getElementById('optimizedBio').textContent=optimized;
+  document.getElementById('bioResult').classList.remove('hidden');
+  document.getElementById('bioResult').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function makeOptimizedBio(mode='balanced'){
+  const identity=v('identity','自媒體創作者');
+  const story=v('story','').trim();
+  const audience=v('audience','想找到方向、開始經營自己的你');
+  const problem=v('problem','不知道自己的特色與內容方向');
+  const transformation=v('transformation','找到定位並開始穩定輸出');
+  const t=topics();
+  const traits=v('traits','真實、敢說、溫柔').split(/[、,，]/).filter(Boolean);
+  const style=v('style','真實、有共感');
+  const goal=v('ctaGoal','領取免費個人品牌定位工具');
+
+  let credibility='';
+  if(story){
+    let short=story.replace(/[。！!？?].*$/,'');
+    if(short.length>24)short=short.slice(0,24);
+    credibility=`${identity}｜${short}`;
+  }else credibility=`${identity}｜把真實經歷變成有價值的內容`;
+
+  const value=`陪${audience.replace(/^20.?30.*?[、，]/,'')}從「${problem}」→「${transformation}」`;
+  const warm=`${traits.slice(0,2).join(' × ') || style}｜分享 ${t.join('・')}`;
+  let cta=goal;
+  if(!/👇|⬇/.test(cta))cta='👇 '+cta;
+
+  if(mode==='professional'){
+    return `${credibility}\n教你用 ${t[0]} × ${t[1]} 打造有記憶點的個人品牌\n${t[2]}也分享｜不只講方法，也講真實過程\n👇 ${goal}`;
+  }
+  if(mode==='warm'){
+    return `${identity}｜正在把人生重新活成自己喜歡的樣子\n陪你一起聊 ${t.join('・')}\n${traits.slice(0,3).join(' × ') || '真實 × 共感 × 有想法'}，不完美也照樣分享\n👇 ${goal}`;
+  }
+  if(mode==='catchy'){
+    return `不是天生會經營｜${identity}的真實成長實驗\n把「${problem.slice(0,18)}」變成有方向\n${t.join(' × ')}｜${traits.slice(0,2).join('・') || '真實・敢說'}\n👇 ${goal}`;
+  }
+  return `${credibility}\n${value}\n${warm}\n${cta}`;
+}
+function generateBioVersions(){
+  document.getElementById('bioProfessional').textContent=makeOptimizedBio('professional');
+  document.getElementById('bioWarm').textContent=makeOptimizedBio('warm');
+  document.getElementById('bioCatchy').textContent=makeOptimizedBio('catchy');
+  document.getElementById('bioVersions').classList.remove('hidden');
+  document.getElementById('bioVersions').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function copyOptimizedBio(){
+  const txt=document.getElementById('optimizedBio').textContent;
+  navigator.clipboard.writeText(txt).then(()=>alert('已複製優化 BIO！')).catch(()=>alert('請手動複製 BIO。'));
+}
+
 function updateSavedSummary(){
   const done=localStorage.getItem('lingBrandCompletedV5')||localStorage.getItem('lingBrandCompleted');
   if(!done){document.getElementById('savedSummary').textContent='目前還沒有完成測驗。';return;}
