@@ -1,0 +1,24 @@
+{
+  "name": "LING｜找到你的品牌",
+  "short_name": "LING 品牌",
+  "description": "把你的故事、個性與經歷，整理成一個讓人記得住的個人品牌。",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F7F0EC",
+  "theme_color": "#F4E9E3",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

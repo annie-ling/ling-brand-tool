@@ -3,8 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#f5efeb" />
-  <title>LING BRAND LAB V6｜個人品牌定位工具</title>
+  <meta name="theme-color" content="#F4E9E3" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="LING 品牌" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="application-name" content="LING 品牌" />
+  <meta name="description" content="把你的故事、個性與經歷，整理成一個讓人記得住的個人品牌。" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-180.png" />
+
+  <title>LING｜找到你的品牌｜個人品牌定位工具</title>
   <style>
     :root{
       --bg:#f7f2ee;
@@ -127,7 +136,7 @@
     .bottom-nav{
       position:fixed;bottom:0;left:0;right:0;z-index:40;
       max-width:760px;margin:auto;
-      display:grid;grid-template-columns:repeat(6,1fr);
+      display:grid;grid-template-columns:repeat(7,1fr);
       background:rgba(255,253,251,.97);backdrop-filter:blur(16px);
       border-top:1px solid var(--line);padding:8px 6px calc(8px + env(safe-area-inset-bottom))
     }
@@ -162,30 +171,148 @@
       .feature-grid,.tool-grid,.choice-grid,.calendar-grid{grid-template-columns:1fr}
       .radar-row{grid-template-columns:78px 1fr 40px}
     }
-  </style>
+  
+    /* V8 — LING signature visual system */
+    :root{
+      --bg:#f7f0ec;
+      --card:#fffaf7;
+      --text:#332b28;
+      --muted:#806f68;
+      --line:#eadbd4;
+      --accent:#9b766b;
+      --accent2:#c29c91;
+      --soft:#f0dfda;
+      --soft2:#fbf4f1;
+      --shadow:0 18px 48px rgba(93,65,56,.09);
+    }
+    body{
+      background:
+        radial-gradient(circle at 88% 3%,rgba(218,181,171,.23),transparent 25%),
+        radial-gradient(circle at 7% 18%,rgba(239,214,204,.28),transparent 28%),
+        linear-gradient(180deg,#fcf8f5 0%,#f7f0ec 100%);
+    }
+    .topbar{background:rgba(250,245,242,.92)}
+    .brand{letter-spacing:.03em;font-size:14px}
+    .hero{padding-top:38px}
+    .hero h1{
+      font-family:"Times New Roman","Noto Serif TC","Songti TC",serif;
+      font-weight:700;
+      letter-spacing:-.035em;
+    }
+    .hero::before{
+      content:"✦";
+      display:block;
+      color:#b98e82;
+      font-size:24px;
+      margin:3px 0 14px;
+    }
+    .badge{
+      background:#f2e1dc;
+      color:#8f695f;
+    }
+    .feature{
+      box-shadow:0 8px 24px rgba(90,65,55,.04);
+    }
+    .feature b::before{
+      content:"✦ ";
+      color:#c29c91;
+      font-size:11px;
+    }
+    .cta{
+      box-shadow:0 10px 24px rgba(130,92,80,.14);
+    }
+    .welcome{
+      background:
+        radial-gradient(circle at 75% 18%,rgba(222,187,177,.35),transparent 28%),
+        radial-gradient(circle at 18% 75%,rgba(240,216,207,.35),transparent 30%),
+        linear-gradient(160deg,#f7efeb,#fffaf7);
+    }
+    .welcome-inner::before{
+      content:"✦";
+      display:block;
+      font-size:36px;
+      color:#b88d81;
+      margin-bottom:18px;
+    }
+    .welcome h2{
+      font-family:"Times New Roman","Noto Serif TC","Songti TC",serif;
+      color:#3b302d;
+    }
+    .welcome-mark{color:#a37b70}
+    .result-hero{
+      background:linear-gradient(145deg,#9a756a,#c09a8e);
+    }
+    .bottom-nav{
+      background:rgba(255,250,247,.97);
+    }
+    .bottom-nav button.active{
+      background:#f0dfda;color:#8f695f;
+    }
+
+  
+    /* V8 — long-form brand introduction */
+    .landing-wrap{max-width:760px;margin:0 auto}
+    .landing-section{padding:58px 4px 64px;border-bottom:1px solid var(--line)}
+    .landing-section:first-child{padding-top:30px}
+    .landing-section:last-child{border-bottom:0}
+    .eyebrow{font-size:13px;font-weight:900;letter-spacing:.14em;color:#a86f50;margin-bottom:20px}
+    .ling-avatar{width:82px;height:82px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#d9a07e;color:#fff;font-family:Georgia,serif;font-size:25px;margin:10px 0 26px;box-shadow:0 12px 30px rgba(123,82,64,.12)}
+    .editorial-title{font-family:"Times New Roman","Noto Serif TC","Songti TC",serif;font-size:39px;line-height:1.25;letter-spacing:-.04em;margin:0 0 24px;color:#3c2e2b}
+    .editorial-title.small{font-size:34px}
+    .landing-copy{font-size:17px;line-height:1.95;color:#75645e;margin:0 0 20px}
+    .landing-copy b{color:#443532}
+    .quote-card{background:#fff;border-left:4px solid #d69a70;border-radius:0 20px 20px 0;padding:24px 22px;font-family:"Noto Serif TC","Songti TC",serif;font-weight:800;font-size:18px;line-height:1.8;box-shadow:var(--shadow);margin-top:28px}
+    .pain-grid{display:grid;gap:14px;margin-top:28px}
+    .pain-card{background:#fff;border-radius:22px;padding:21px;display:flex;gap:16px;align-items:flex-start;box-shadow:0 12px 28px rgba(93,65,56,.06)}
+    .pain-card span{font-family:Georgia,serif;font-size:20px;color:#d69267;font-weight:700}
+    .pain-card p{margin:0;font-size:16px;line-height:1.75}
+    .warm-section{background:linear-gradient(180deg,rgba(248,237,226,.55),rgba(255,250,247,.1));margin-left:-18px;margin-right:-18px;padding-left:22px;padding-right:22px}
+    .benefit-card{border-radius:20px;padding:20px 21px;margin:13px 0;display:flex;flex-direction:column;gap:8px}
+    .benefit-card b{font-size:17px}.benefit-card span{font-size:15px;line-height:1.65}
+    .benefit-card.green{background:#e6eee5;color:#486551}.benefit-card.blue{background:#e4edf3;color:#49687c}
+    .benefit-card.peach{background:#f8eddf;color:#795e48}.benefit-card.rose{background:#f3e4e2;color:#805d59}
+    .steps{margin-top:26px}
+    .step{display:grid;grid-template-columns:58px 1fr;gap:18px;margin:0 0 32px;align-items:flex-start}
+    .step i{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#c9865c;color:#fff;font-family:Georgia,serif;font-size:22px;font-style:normal}
+    .step b{font-family:"Noto Serif TC","Songti TC",serif;font-size:19px;color:#443431}
+    .step p{margin:7px 0 0;color:#806e67;line-height:1.7}
+    .who-list{display:grid;gap:13px;margin-top:28px}
+    .who-list>div{background:#fff;border-radius:20px;padding:20px;display:grid;grid-template-columns:42px 1fr;gap:10px;align-items:center;box-shadow:0 10px 26px rgba(93,65,56,.05)}
+    .who-list em{font-family:Georgia,serif;font-size:24px;font-style:normal;color:#dc9b70}
+    .who-list span{font-size:16px;line-height:1.65;color:#4a3a36}
+    .final-section{text-align:center;padding-bottom:100px}
+    .spark{font-size:32px;color:#b98e82;display:block;margin-bottom:18px}
+    .center{text-align:center}.landing-cta{margin-top:28px}.signature{font-size:12px;letter-spacing:.08em;color:#a08c84;margin-top:28px}
+    @media(max-width:420px){
+      .editorial-title{font-size:34px}.editorial-title.small{font-size:30px}
+      .landing-copy{font-size:16px}.landing-section{padding-top:48px;padding-bottom:54px}
+      .bottom-nav button{font-size:9px}.bottom-nav .icon{font-size:16px}
+    }
+
+</style>
 </head>
 <body>
 
 <div id="welcome" class="welcome">
   <div class="welcome-inner">
-    <div class="welcome-mark">LING BRAND LAB · V6</div>
-    <h2>你不是沒有特色，<br>只是還沒把自己整理成品牌。</h2>
-    <p>用幾分鐘找出你的創作者人格、內容支柱與最適合你的內容路線。</p>
+    <div class="welcome-mark">LING｜找到你的品牌</div>
+    <h2>你不是沒有特色，<br>只是還沒看見自己的價值。</h2>
+    <p>不用變成別人喜歡的樣子。從你的故事開始，找到屬於你的內容方向與品牌光芒。</p>
     <button class="cta" onclick="closeWelcome()">開始探索我的品牌 →</button>
   </div>
 </div>
 
 <div class="app">
   <header class="topbar">
-    <div class="brand">LING BRAND LAB · V6</div>
+    <div class="brand">LING｜找到你的品牌</div>
     <div class="tiny">@ling_02_02</div>
   </header>
 
   <section id="home" class="page active">
     <div class="hero">
       <span class="badge">PERSONAL BRAND SYSTEM</span>
-      <h1>找到你的創作者人格，讓內容開始有方向。</h1>
-      <p class="lead">從「你是誰、你幫誰、你說什麼」開始，把你的經歷與個性整理成一個讓人記得住的品牌。</p>
+      <h1>你不是沒有特色，只是還沒看見自己的價值。</h1>
+      <p class="lead">把你的故事、個性與經歷，整理成一個讓人記得住、也真正像你的品牌。</p>
       <p class="hero-note">適合：剛開始經營自媒體、內容很散、想找到定位的人。</p>
     </div>
 
@@ -199,6 +326,7 @@
     </div>
 
     <button class="cta" onclick="go('quiz')">開始定位測驗 →</button>
+      <button class="cta ghost" onclick="go('aboutLing')">了解這份工具與我的故事</button>
     <div class="notice">資料只儲存在你的瀏覽器，不需要註冊。</div>
   </section>
 
@@ -339,7 +467,7 @@
         <p id="sharePosition" style="line-height:1.7"></p>
         <div id="sharePillars" class="pill-wrap" style="justify-content:center;margin-top:16px"></div>
         <div id="shareScore" style="font-size:13px;color:#786e68;margin-top:16px"></div>
-        <div style="font-size:12px;color:#786e68;margin-top:20px">@ling_02_02 · LING BRAND LAB</div>
+        <div style="font-size:12px;color:#786e68;margin-top:20px">@ling_02_02 · LING</div>
       </div>
       <button class="cta secondary" onclick="downloadShareCard()">下載分享卡 PNG</button>
       <canvas id="shareCanvas" width="1080" height="1350"></canvas>
@@ -486,6 +614,75 @@
     </div>
   </section>
 
+
+  <section id="aboutLing" class="page">
+    <div class="landing-wrap">
+      <div class="landing-section intro-section">
+        <div class="eyebrow">關於這份工具</div>
+        <div class="ling-avatar">LING</div>
+        <h1 class="editorial-title">我不是一開始<br>就知道自己要做什麼</h1>
+        <p class="landing-copy">我也曾經把「工作」當成自己的全部。換過不同環境、做過不同選擇，直到後來才慢慢發現：<b>真正能帶走的，不只是職稱，而是你一路累積下來的故事、能力與想法。</b></p>
+        <p class="landing-copy">開始經營自媒體後，我也不是突然就會定位、會剪輯、會寫內容。很多東西都是一邊做、一邊跌倒，再一邊把方法整理出來。</p>
+        <div class="quote-card">「沒有白走的路。過去所有的積累，都會在新的舞台上加倍回饋給你。」</div>
+      </div>
+
+      <div class="landing-section">
+        <div class="eyebrow">為什麼做這個工具</div>
+        <h2 class="editorial-title small">我以前也以為<br>「我好像沒什麼特別」</h2>
+        <p class="landing-copy">但後來我發現，很多人不是沒有特色，而是<b>太習慣自己的人生，所以看不見自己的價值。</b></p>
+        <div class="pain-grid">
+          <div class="pain-card"><span>01</span><p>想經營自媒體，卻不知道自己到底適合分享什麼。</p></div>
+          <div class="pain-card"><span>02</span><p>問 AI 得到一堆答案，但看起來很制式，完全不像自己。</p></div>
+          <div class="pain-card"><span>03</span><p>拍了一段時間，題材越來越乾，開始懷疑是不是自己沒天份。</p></div>
+          <div class="pain-card"><span>04</span><p>IG 有內容，觀眾進到首頁卻還是不知道「為什麼要追蹤你」。</p></div>
+        </div>
+      </div>
+
+      <div class="landing-section warm-section">
+        <div class="eyebrow">這份工具在做什麼</div>
+        <h2 class="editorial-title small">不是把你變成別人<br>而是把「你」整理清楚</h2>
+        <p class="landing-copy">我把自己經營內容時最常反覆思考的問題，整理成一套可以直接操作的流程。從你的<b>經歷、個性、價值觀、受眾、內容方向</b>開始，一步步拼出專屬於你的品牌輪廓。</p>
+        <div class="benefit-card green"><b>✓ 找到你是誰</b><span>把經歷與個性整理成有辨識度的創作者人格</span></div>
+        <div class="benefit-card blue"><b>✓ 找到你能幫誰</b><span>不再對所有人說話，而是知道你的內容真正想陪伴誰</span></div>
+        <div class="benefit-card peach"><b>✓ 找到你可以說什麼</b><span>從內容支柱延伸題材，讓你不再每次發文都從零開始</span></div>
+        <div class="benefit-card rose"><b>✓ 把首頁變得更會轉粉</b><span>BIO 人格分析＋IG 黃金 4 行，讓別人一進來就看懂你</span></div>
+      </div>
+
+      <div class="landing-section">
+        <div class="eyebrow">怎麼使用</div>
+        <h2 class="editorial-title small">幾個小步驟<br>全程手機就能完成</h2>
+        <div class="steps">
+          <div class="step"><i>1</i><div><b>完成你的品牌定位</b><p>跟著問題填寫，不需要一次就想得很完美。</p></div></div>
+          <div class="step"><i>2</i><div><b>看懂你的創作者人格</b><p>整理「你是誰、你幫誰、你說什麼」，找到最適合你的表達方式。</p></div></div>
+          <div class="step"><i>3</i><div><b>直接拿內容工具開始做</b><p>從題材、前三秒、7 天企劃到 30 天內容地圖，把想法變成行動。</p></div></div>
+          <div class="step"><i>4</i><div><b>最後優化你的 IG BIO</b><p>用黃金 4 行公式，讓首頁不只是介紹你，而是讓對的人留下來。</p></div></div>
+        </div>
+      </div>
+
+      <div class="landing-section">
+        <div class="eyebrow">適合你，如果你是</div>
+        <h2 class="editorial-title small">正在找方向的<br>這五種人</h2>
+        <div class="who-list">
+          <div><em>1</em><span>完全零經驗，卻很想開始經營自媒體</span></div>
+          <div><em>2</em><span>上班族，想把下班後的時間慢慢變成自己的資產</span></div>
+          <div><em>3</em><span>已經開始經營，但定位一直改、內容很容易卡住</span></div>
+          <div><em>4</em><span>有產品／副業，卻不想讓自己的帳號只剩下「賣東西」</span></div>
+          <div><em>5</em><span>想建立有個性、有溫度，也真正像自己的個人品牌</span></div>
+        </div>
+      </div>
+
+      <div class="landing-section final-section">
+        <span class="spark">✦</span>
+        <div class="eyebrow">LING BRAND LAB</div>
+        <h2 class="editorial-title small">你不需要先變得很厲害<br>才有資格開始</h2>
+        <p class="landing-copy center">你的經歷、你在意的事、你走過的路，本來就可以成為內容。<br><b>先找到自己，再讓對的人找到你。</b></p>
+        <button class="cta landing-cta" onclick="go('quiz')">開始找到我的品牌 →</button>
+        <button class="cta ghost" onclick="go('bioLab')">先分析我的 IG BIO</button>
+        <div class="signature">@ling_02_02 · 把真實活成自己的品牌</div>
+      </div>
+    </div>
+  </section>
+
   <section id="profile" class="page">
     <div class="section-head">
       <h2>我的品牌檔案</h2>
@@ -504,6 +701,7 @@
     <button data-page="tools" onclick="go('tools')"><span class="icon">▦</span>工具</button>
     <button data-page="planner" onclick="go('planner')"><span class="icon">◫</span>30天</button>
     <button data-page="bioLab" onclick="go('bioLab')"><span class="icon">✎</span>BIO</button>
+    <button data-page="aboutLing" onclick="go('aboutLing')"><span class="icon">✦</span>介紹</button>
     <button data-page="profile" onclick="go('profile')"><span class="icon">☺</span>我的</button>
   </nav>
 </div>
@@ -513,11 +711,11 @@ let currentStep=1;
 const ids=["name","identity","story","traits","values","style","audience","problem","transformation","topics","format","goal","ctaGoal","currentBio"];
 
 function closeWelcome(){
-  localStorage.setItem('lingV6Welcome','1');
+  localStorage.setItem('lingV8Welcome','1');
   document.getElementById('welcome').classList.add('hide');
   setTimeout(()=>document.getElementById('welcome').style.display='none',350);
 }
-if(localStorage.getItem('lingV6Welcome')){
+if(localStorage.getItem('lingV8Welcome')){
   document.getElementById('welcome').style.display='none';
 }
 
@@ -939,7 +1137,7 @@ function downloadShareCard(){
   wrapText(ctx,pos,540,455,820,58);
   ctx.font='700 34px sans-serif';ctx.fillStyle='#8C7062';ctx.fillText(topics().join(' × '),540,780);
   ctx.fillStyle='#2D2926';ctx.font='32px sans-serif';ctx.fillText(`品牌完成度 ${calcBrandScore()}%`,540,900);
-  ctx.fillStyle='#786E68';ctx.font='28px sans-serif';ctx.fillText('@ling_02_02 · LING BRAND LAB',540,1190);
+  ctx.fillStyle='#786E68';ctx.font='28px sans-serif';ctx.fillText('@ling_02_02 · LING',540,1190);
   const a=document.createElement('a');a.download='ling-brand-result.png';a.href=canvas.toDataURL('image/png');a.click();
 }
 
