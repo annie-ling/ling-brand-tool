@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#F4EEE9" />
+  <title>LING｜個人品牌定位工具</title>
+  <style>
+    :root{
+      --bg:#f7f2ee;
+      --card:#fffdfb;
+      --text:#2d2926;
+      --muted:#7b7069;
+      --line:#eadfd8;
+      --accent:#8f7466;
+      --accent2:#b79a89;
+      --soft:#efe4dd;
+      --success:#6f8a76;
+      --shadow:0 16px 45px rgba(67,48,39,.10);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+      background:linear-gradient(180deg,#fbf8f5 0%,var(--bg) 100%);
+      color:var(--text);
+      min-height:100vh;
+    }
+    button,input,textarea,select{font:inherit}
+    button{cursor:pointer}
+    .app{max-width:760px;margin:0 auto;min-height:100vh;padding-bottom:88px}
+    .topbar{
+      position:sticky;top:0;z-index:10;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 18px;
+      background:rgba(247,242,238,.92);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(234,223,216,.8);
+    }
+    .brand{font-weight:900;letter-spacing:.08em;font-size:14px}
+    .tiny{font-size:12px;color:var(--muted)}
+    .page{display:none;padding:24px 18px 32px}
+    .page.active{display:block}
+    .hero{padding:42px 4px 24px;text-align:left}
+    .badge{
+      display:inline-block;padding:7px 12px;border-radius:999px;
+      background:var(--soft);color:var(--accent);font-size:12px;font-weight:800;
+      letter-spacing:.05em;
+    }
+    h1{font-size:clamp(34px,8vw,56px);line-height:1.08;margin:18px 0 14px;letter-spacing:-.04em}
+    .lead{font-size:17px;color:var(--muted);line-height:1.8;margin:0}
+    .card{
+      background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+      padding:20px;box-shadow:var(--shadow);margin-top:16px;
+    }
+    .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+    .feature{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px}
+    .feature b{display:block;margin-bottom:5px}
+    .feature span{font-size:13px;color:var(--muted)}
+    .cta{
+      width:100%;border:0;border-radius:16px;padding:15px 18px;font-weight:900;
+      background:var(--accent);color:#fff;margin-top:18px;
+    }
+    .cta.secondary{background:var(--soft);color:var(--accent)}
+    .cta.ghost{background:#fff;color:var(--text);border:1px solid var(--line)}
+    .section-head{margin-bottom:20px}
+    .section-head h2{margin:0 0 8px;font-size:28px}
+    .section-head p{margin:0;color:var(--muted)}
+    .progress{
+      height:8px;background:#ece3de;border-radius:999px;overflow:hidden;margin:10px 0 4px
+    }
+    .progress > div{height:100%;background:var(--accent);width:0%;transition:.25s}
+    .step-count{font-size:12px;color:var(--muted);text-align:right}
+    label{display:block;font-weight:800;margin:18px 0 8px}
+    input,textarea,select{
+      width:100%;border:1px solid var(--line);background:#fff;border-radius:15px;
+      padding:14px;color:var(--text);outline:none;
+    }
+    textarea{min-height:100px;resize:vertical}
+    input:focus,textarea:focus,select:focus{
+      border-color:var(--accent2);box-shadow:0 0 0 4px rgba(183,154,137,.12)
+    }
+    .choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .choice{
+      padding:13px;border:1px solid var(--line);border-radius:14px;background:#fff;
+      text-align:center;font-weight:700;
+    }
+    .choice.active{background:var(--soft);border-color:var(--accent2);color:var(--accent)}
+    .nav-actions{display:flex;gap:10px;margin-top:22px}
+    .nav-actions button{flex:1}
+    .result-hero{
+      background:linear-gradient(145deg,#8f7466 0%,#b69887 100%);
+      color:#fff;border-radius:28px;padding:24px;box-shadow:var(--shadow);margin-top:12px;
+    }
+    .result-hero .kicker{font-size:12px;opacity:.85;font-weight:800;letter-spacing:.08em}
+    .result-hero h2{font-size:30px;line-height:1.3;margin:10px 0 0}
+    .result-card{
+      background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;margin-top:14px
+    }
+    .result-card h3{margin:0 0 10px;font-size:16px;color:var(--accent)}
+    .result-card p{margin:0;white-space:pre-line;line-height:1.8}
+    .pill-wrap{display:flex;gap:8px;flex-wrap:wrap}
+    .pill{background:var(--soft);border-radius:999px;padding:8px 11px;font-size:13px;font-weight:700}
+    .tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .tool{
+      border:1px solid var(--line);background:#fff;border-radius:18px;padding:16px;text-align:left;
+      min-height:130px;
+    }
+    .tool .emoji{font-size:24px}
+    .tool b{display:block;margin:8px 0 5px}
+    .tool span{font-size:13px;color:var(--muted);line-height:1.5}
+    .bottom-nav{
+      position:fixed;bottom:0;left:0;right:0;z-index:20;
+      max-width:760px;margin:auto;
+      display:grid;grid-template-columns:repeat(4,1fr);
+      background:rgba(255,253,251,.96);backdrop-filter:blur(16px);
+      border-top:1px solid var(--line);padding:8px 8px calc(8px + env(safe-area-inset-bottom));
+    }
+    .bottom-nav button{
+      border:0;background:transparent;padding:8px 4px;border-radius:12px;
+      color:var(--muted);font-size:11px;font-weight:700
+    }
+    .bottom-nav button.active{background:var(--soft);color:var(--accent)}
+    .icon{display:block;font-size:19px;margin-bottom:2px}
+    .hidden{display:none!important}
+    .notice{
+      margin-top:14px;padding:12px 14px;border-radius:14px;background:#f8f3ef;
+      color:var(--muted);font-size:13px
+    }
+    .ideas-list{white-space:pre-line;line-height:1.8}
+    @media(max-width:560px){
+      .feature-grid,.tool-grid,.choice-grid{grid-template-columns:1fr}
+      .page{padding-left:14px;padding-right:14px}
+      .hero{padding-top:30px}
+    }
+  
+    .type-card{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:16px;
+      background:#fff;
+      margin-top:12px;
+    }
+    .score-row{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      margin-top:10px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+  </style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">LING BRAND LAB · V4</div>
+    <div class="tiny">@ling_02_02</div>
+  </header>
+
+  <section id="home" class="page active">
+    <div class="hero">
+      <span class="badge">PERSONAL BRAND TOOL</span>
+      <h1>找到你的創作者人格，讓定位、內容與變現開始對齊。</h1>
+      <p class="lead">不知道自己要發什麼，不一定是你沒有特色。很多時候，只是你還沒把經歷、價值觀、受眾與內容整理在一起。</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature"><b>定位測驗</b><span>一步一步整理你的品牌核心。</span></div>
+      <div class="feature"><b>自動結果</b><span>產出一句話定位與 IG Bio。</span></div>
+      <div class="feature"><b>內容支柱</b><span>找出最適合你長期經營的主題。</span></div>
+      <div class="feature"><b>短影音靈感</b><span>直接拿到可開始拍的題目。</span></div>
+      <div class="feature"><b>創作者人格</b><span>分析你最適合的內容路線與表達方式。</span></div>
+      <div class="feature"><b>品牌完成度</b><span>快速看見你目前最該補強的地方。</span></div>
+    </div>
+
+    <button class="cta" onclick="go('quiz')">開始我的定位測驗 →</button>
+    <div class="notice">第一版資料只儲存在你的瀏覽器，不需要註冊帳號。</div>
+  </section>
+
+  <section id="quiz" class="page">
+    <div class="section-head">
+      <h2>你的品牌定位測驗</h2>
+      <p>不用答得很完美，越真實越有用。</p>
+      <div class="progress"><div id="progressBar"></div></div>
+      <div class="step-count"><span id="stepNow">1</span> / 5</div>
+    </div>
+
+    <div id="step1" class="quiz-step card">
+      <h3>01｜先說說你是誰</h3>
+      <label>你的名字 / 暱稱</label>
+      <input id="name" placeholder="例如：伊玲">
+      <label>你現在的身份</label>
+      <input id="identity" placeholder="例如：自媒體創作者、上班族">
+      <label>你最有記憶點的一段經歷</label>
+      <textarea id="story" placeholder="例如：從工作內耗，到開始學剪輯與經營自媒體。"></textarea>
+    </div>
+
+    <div id="step2" class="quiz-step card hidden">
+      <h3>02｜你的個人特色</h3>
+      <label>你最明顯的 3 個特質</label>
+      <input id="traits" placeholder="例如：真實、敢說、溫柔">
+      <label>你最重視的價值觀</label>
+      <textarea id="values" placeholder="例如：善良有底線、成長比完美重要。"></textarea>
+      <label>你希望別人想到你時，是什麼感覺？</label>
+      <input id="style" placeholder="例如：像朋友聊天、有共感、但有觀點">
+    </div>
+
+    <div id="step3" class="quiz-step card hidden">
+      <h3>03｜你想吸引誰</h3>
+      <label>你最想吸引哪一群人？</label>
+      <input id="audience" placeholder="例如：20–30 歲，想經營自媒體卻沒方向的女生">
+      <label>她們現在最大的困擾</label>
+      <textarea id="problem" placeholder="例如：不知道自己有什麼特色，也不知道每天要發什麼。"></textarea>
+      <label>你希望她們最後變成什麼樣子？</label>
+      <textarea id="transformation" placeholder="例如：找到自己的定位，敢分享，也有變現方向。"></textarea>
+    </div>
+
+    <div id="step4" class="quiz-step card hidden">
+      <h3>04｜你的內容要說什麼</h3>
+      <label>你的 3 個主要內容主題</label>
+      <input id="topics" placeholder="例如：自媒體成長、情侶共鳴、變美日常">
+      <label>你最擅長的內容形式</label>
+      <div class="choice-grid" id="formatChoices">
+        <button type="button" class="choice" data-value="短影音口播">短影音口播</button>
+        <button type="button" class="choice" data-value="日常 Vlog">日常 Vlog</button>
+        <button type="button" class="choice" data-value="輪播圖文">輪播圖文</button>
+        <button type="button" class="choice" data-value="限動分享">限動分享</button>
+      </div>
+      <input type="hidden" id="format" value="短影音口播">
+    </div>
+
+    <div id="step5" class="quiz-step card hidden">
+      <h3>05｜最後一題</h3>
+      <label>你經營個人品牌最想達成什麼？</label>
+      <select id="goal">
+        <option>建立個人影響力</option>
+        <option>打造副業收入</option>
+        <option>接案與合作</option>
+        <option>銷售自己的產品或服務</option>
+        <option>單純記錄與分享</option>
+      </select>
+      <label>你最希望觀眾看完你的內容後做什麼？</label>
+      <input id="ctaGoal" placeholder="例如：收藏、留言、追蹤、私訊我">
+    </div>
+
+    <div class="nav-actions">
+      <button id="prevBtn" class="cta ghost" onclick="prevStep()">上一題</button>
+      <button id="nextBtn" class="cta" onclick="nextStep()">下一題</button>
+    </div>
+  </section>
+
+  <section id="result" class="page">
+    <div class="section-head">
+      <h2>你的品牌定位結果</h2>
+      <p>這不是標準答案，而是你目前最值得放大的方向。</p>
+    </div>
+
+    <div class="result-hero">
+      <div class="kicker">YOUR BRAND POSITIONING</div>
+      <h2 id="positioning">完成測驗後，這裡會出現你的定位。</h2>
+    </div>
+
+    <div class="result-card">
+      <h3>你是誰</h3>
+      <p id="who"></p>
+    </div>
+    <div class="result-card">
+      <h3>你幫誰</h3>
+      <p id="help"></p>
+    </div>
+    <div class="result-card">
+      <h3>你說什麼</h3>
+      <p id="say"></p>
+    </div>
+    <div class="result-card">
+      <h3>3 大內容支柱</h3>
+      <div id="pillars" class="pill-wrap"></div>
+    </div>
+    <div class="result-card">
+      <h3>你的創作者人格</h3>
+      <p id="creatorType"></p>
+    </div>
+    <div class="result-card">
+      <h3>品牌完成度</h3>
+      <div class="progress" style="margin:10px 0 8px"><div id="brandScoreBar"></div></div>
+      <p id="brandScoreText"></p>
+    </div>
+    <div class="result-card">
+      <h3>你現在最該優先做的 3 件事</h3>
+      <p id="priorityAdvice"></p>
+    </div>
+    <div class="result-card">
+      <h3>IG Bio 草稿</h3>
+      <p id="bio"></p>
+    </div>
+    <button class="cta secondary" onclick="copyResult()">一鍵複製定位結果</button>
+    <button class="cta ghost" onclick="makeShareCard()">產生分享版定位卡</button>
+    <div id="shareCard" class="result-card hidden" style="text-align:center;padding:30px 20px;background:linear-gradient(160deg,#f7eee8,#fffdfb)">
+      <div style="font-size:12px;letter-spacing:.14em;color:#8f7466;font-weight:900">MY CREATOR PROFILE</div>
+      <h3 id="shareName" style="font-size:28px;color:#2d2926;margin:12px 0 6px"></h3>
+      <div id="shareType" style="font-size:15px;font-weight:800;color:#8f7466;margin-bottom:12px"></div>
+      <p id="sharePosition" style="font-size:16px"></p>
+      <div id="sharePillars" class="pill-wrap" style="justify-content:center;margin-top:16px"></div>
+      <div id="shareScore" style="font-size:13px;color:#7b7069;margin-top:16px"></div>
+      <div style="font-size:12px;color:#7b7069;margin-top:20px">@ling_02_02 · LING BRAND LAB</div>
+    </div>
+  </section>
+
+  <section id="tools" class="page">
+    <div class="section-head">
+      <h2>內容工具箱</h2>
+      <p>把定位直接變成你可以發出去的內容。</p>
+    </div>
+
+    <div class="tool-grid">
+      <button class="tool" onclick="buildIdeas()">
+        <span class="emoji">🎬</span>
+        <b>10 個短影音選題</b>
+        <span>依照你的定位自動產生。</span>
+      </button>
+      <button class="tool" onclick="buildHooks()">
+        <span class="emoji">⚡</span>
+        <b>爆款前三秒</b>
+        <span>產出 8 個可直接使用的開頭。</span>
+      </button>
+      <button class="tool" onclick="buildChecklist()">
+        <span class="emoji">✅</span>
+        <b>發布前檢核</b>
+        <span>快速檢查影片有沒有重點。</span>
+      </button>
+      <button class="tool" onclick="buildProfileAudit()">
+        <span class="emoji">🔍</span>
+        <b>IG 帳號健檢</b>
+        <span>檢查名稱、Bio、內容支柱是否一致。</span>
+      </button>
+      <button class="tool" onclick="buildContentPlan()">
+        <span class="emoji">🗓️</span>
+        <b>7 天內容企劃</b>
+        <span>依照三大支柱安排一週內容。</span>
+      </button>
+      <button class="tool" onclick="buildCTA()">
+        <span class="emoji">💬</span>
+        <b>留言 CTA 產生器</b>
+        <span>產出收藏、留言與私訊引導。</span>
+      </button>
+      <button class="tool" onclick="showCreatorStrategy()">
+        <span class="emoji">🧭</span>
+        <b>我的創作者策略</b>
+        <span>依人格推薦最適合的內容打法。</span>
+      </button>
+    </div>
+
+    <div id="toolOutput" class="result-card hidden">
+      <h3 id="toolTitle"></h3>
+      <p id="toolText" class="ideas-list"></p>
+    </div>
+  </section>
+
+  <section id="profile" class="page">
+    <div class="section-head">
+      <h2>我的品牌檔案</h2>
+      <p>你填過的資料會保留在這台裝置。</p>
+    </div>
+    <div class="card">
+      <p id="savedSummary">目前還沒有完成測驗。</p>
+      <button class="cta secondary" onclick="go('quiz')">重新編輯定位</button>
+      <button class="cta ghost" onclick="clearData()">清除我的資料</button>
+    </div>
+  </section>
+
+  <nav class="bottom-nav">
+    <button data-page="home" class="active" onclick="go('home')"><span class="icon">⌂</span>首頁</button>
+    <button data-page="quiz" onclick="go('quiz')"><span class="icon">✦</span>定位</button>
+    <button data-page="tools" onclick="go('tools')"><span class="icon">▦</span>工具</button>
+    <button data-page="profile" onclick="go('profile')"><span class="icon">☺</span>我的</button>
+  </nav>
+</div>
+
+<script>
+let currentStep = 1;
+
+const ids = ["name","identity","story","traits","values","style","audience","problem","transformation","topics","format","goal","ctaGoal"];
+
+function go(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(page).classList.add('active');
+  document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(page==='profile') updateSavedSummary();
+}
+
+function updateProgress(){
+  document.querySelectorAll('.quiz-step').forEach((s,i)=>s.classList.toggle('hidden', i+1!==currentStep));
+  document.getElementById('stepNow').textContent=currentStep;
+  document.getElementById('progressBar').style.width=(currentStep/5*100)+'%';
+  document.getElementById('prevBtn').style.visibility=currentStep===1?'hidden':'visible';
+  document.getElementById('nextBtn').textContent=currentStep===5?'產生我的定位 ✨':'下一題';
+}
+
+function nextStep(){
+  saveData();
+  if(currentStep<5){ currentStep++; updateProgress(); window.scrollTo({top:90,behavior:'smooth'}); }
+  else { generateBrand(); }
+}
+function prevStep(){ if(currentStep>1){ currentStep--; updateProgress(); window.scrollTo({top:90,behavior:'smooth'}); } }
+
+document.querySelectorAll('.choice').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.choice').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('format').value=btn.dataset.value;
+  });
+});
+document.querySelector('.choice').classList.add('active');
+
+function v(id, fallback=''){return (document.getElementById(id).value||'').trim()||fallback;}
+function topics(){
+  let arr=v('topics','成長、自媒體、生活').split(/[、,，/｜|]/).map(x=>x.trim()).filter(Boolean).slice(0,3);
+  while(arr.length<3) arr.push(['成長','生活','觀點'][arr.length]);
+  return arr;
+}
+function saveData(){
+  const data={}; ids.forEach(id=>data[id]=document.getElementById(id).value);
+  localStorage.setItem('lingBrandData',JSON.stringify(data));
+}
+function loadData(){
+  const raw=localStorage.getItem('lingBrandData'); if(!raw)return;
+  try{
+    const data=JSON.parse(raw);
+    ids.forEach(id=>{if(data[id]!==undefined) document.getElementById(id).value=data[id]});
+    document.querySelectorAll('.choice').forEach(b=>b.classList.toggle('active',b.dataset.value===document.getElementById('format').value));
+  }catch(e){}
+}
+
+function getCreatorType(){
+  const style=v('style','真實、有共感');
+  const story=v('story','');
+  const topicsText=v('topics','').toLowerCase();
+  const goal=v('goal','建立個人影響力');
+  const format=v('format','短影音口播');
+
+  let scores={story:0,guide:0,healer:0,trend:0};
+
+  if(story.length>35) scores.story+=2;
+  if(/真實|故事|日常|vlog|生活/.test(style+topicsText+format)) scores.story+=2;
+
+  if(/教學|技巧|知識|成長|自媒體|剪輯|理財/.test(topicsText+style)) scores.guide+=3;
+  if(/接案|產品|服務|副業|影響力/.test(goal)) scores.guide+=1;
+
+  if(/共感|療癒|溫柔|感情|情侶|陪伴/.test(style+topicsText)) scores.healer+=3;
+  if(/留言|收藏|追蹤/.test(v('ctaGoal',''))) scores.healer+=1;
+
+  if(/爆款|趨勢|短影音|reels|口播/.test(topicsText+format+style)) scores.trend+=2;
+  if(goal==='建立個人影響力') scores.trend+=1;
+
+  const key=Object.entries(scores).sort((a,b)=>b[1]-a[1])[0][0];
+  const map={
+    story:{
+      name:'故事型創作者',
+      desc:'你最有力量的不是「教很多」，而是把真實經歷說得讓人有代入感。適合日常故事、轉變歷程、POV、成長紀錄。',
+      content:'故事＋轉折＋觀點'
+    },
+    guide:{
+      name:'導航型創作者',
+      desc:'你適合把複雜的事情整理成簡單、可執行的方法。觀眾會因為「跟著你就知道怎麼做」而留下。',
+      content:'教學＋懶人包＋步驟'
+    },
+    healer:{
+      name:'共感型創作者',
+      desc:'你的優勢是情緒感受與陪伴感。觀眾不是只來學東西，而是因為覺得「你很懂我」而留下。',
+      content:'共鳴＋關係＋療癒'
+    },
+    trend:{
+      name:'吸睛型創作者',
+      desc:'你對節奏、題材與注意力很敏感，適合做強開頭、熱門話題與短影音型內容，再加入你的個人觀點。',
+      content:'鉤子＋趨勢＋反差'
+    }
+  };
+  return map[key];
+}
+
+function calcBrandScore(){
+  const checkIds=['name','identity','story','traits','values','style','audience','problem','transformation','topics','ctaGoal'];
+  let filled=checkIds.filter(id=>v(id,'').length>=3).length;
+  let score=Math.round((filled/checkIds.length)*100);
+  return Math.max(20,score);
+}
+
+function buildPriorityAdvice(score,type){
+  const t=topics();
+  let arr=[];
+  if(score<60){
+    arr=[
+      `1. 先把「受眾＋痛點」寫得更具體，不要只寫所有人都適用的內容。`,
+      `2. 固定 3 個內容支柱：${t.join('、')}，先連續發 2–4 週。`,
+      `3. 每支內容都加入一個你的經歷或觀點，避免只剩資訊整理。`
+    ];
+  }else if(score<85){
+    arr=[
+      `1. 讓封面、Bio、內容主題都對齊同一個受眾。`,
+      `2. 放大你的「${type.content}」優勢，形成觀眾對你的固定印象。`,
+      `3. 開始設定固定 CTA，把流量導向留言、私訊或產品。`
+    ];
+  }else{
+    arr=[
+      `1. 你的基礎定位已經很完整，下一步是「穩定輸出＋驗證數據」。`,
+      `2. 每週至少測試 2 種不同前三秒鉤子，保留表現最好的結構。`,
+      `3. 把高互動內容整理成系列，慢慢做成可重複的品牌資產。`
+    ];
+  }
+  return arr.join('\n');
+}
+
+function generateBrand(){
+  saveData();
+  const name=v('name','你');
+  const identity=v('identity','內容創作者');
+  const story=v('story','正在把自己的經歷整理成有價值的內容');
+  const traits=v('traits','真實、有想法、有共感');
+  const values=v('values','做自己、持續成長、分享有價值的內容');
+  const style=v('style','真實、像朋友聊天、有共感');
+  const audience=v('audience','正在找方向、想讓自己變得更好的年輕女生');
+  const problem=v('problem','不知道自己有什麼特色，也不知道怎麼開始');
+  const transformation=v('transformation','找到自己的特色，開始有方向地行動');
+  const t=topics();
+  const format=v('format','短影音口播');
+  const goal=v('goal','建立個人影響力');
+  const cta=v('ctaGoal','收藏、留言或追蹤');
+
+  document.getElementById('positioning').textContent =
+    `${name}｜用 ${t.join(' × ')}，陪伴${audience}，從迷茫走向有方向、有自信的自己。`;
+
+  document.getElementById('who').textContent =
+    `我是${name}，現在是一名${identity}。\n我的故事是：${story}。\n我的品牌氣質是「${traits}」，最核心的價值觀是「${values}」。`;
+
+  document.getElementById('help').textContent =
+    `我想吸引的是：${audience}。\n她們目前最常卡在：${problem}。\n我希望我的內容可以陪她們走向：${transformation}。`;
+
+  document.getElementById('say').textContent =
+    `我會圍繞「${t.join('、')}」持續分享，以${style}的方式表達，主要形式是${format}。\n經營目標：${goal}；希望觀眾看完後願意${cta}。`;
+
+  const wrap=document.getElementById('pillars'); wrap.innerHTML='';
+  t.forEach((x,i)=>{const s=document.createElement('span');s.className='pill';s.textContent=`0${i+1} ${x}`;wrap.appendChild(s)});
+
+  const creatorType=getCreatorType();
+  const brandScore=calcBrandScore();
+
+  document.getElementById('creatorType').textContent =
+    `${creatorType.name}\n${creatorType.desc}\n最適合你的內容公式：${creatorType.content}`;
+
+  document.getElementById('brandScoreBar').style.width=brandScore+'%';
+  document.getElementById('brandScoreText').textContent =
+    `${brandScore}%｜${brandScore<60?'先把定位骨架補完整':brandScore<85?'定位已成形，開始建立一致性':'品牌基礎很完整，可以進入放大階段'}`;
+
+  document.getElementById('priorityAdvice').textContent =
+    buildPriorityAdvice(brandScore,creatorType);
+
+  document.getElementById('bio').textContent =
+    `${name}｜${identity}\n${t.join(' × ')}\n陪你從「${problem}」→「${transformation}」\n${style}`;
+
+  localStorage.setItem('lingBrandCompleted','1');
+  go('result');
+}
+
+function copyResult(){
+  const text=[
+    '【一句話定位】',document.getElementById('positioning').textContent,'',
+    '【你是誰】',document.getElementById('who').textContent,'',
+    '【你幫誰】',document.getElementById('help').textContent,'',
+    '【你說什麼】',document.getElementById('say').textContent,'',
+    '【IG Bio】',document.getElementById('bio').textContent
+  ].join('\n');
+  navigator.clipboard.writeText(text).then(()=>alert('已複製！'));
+}
+
+function showTool(title,text){
+  document.getElementById('toolTitle').textContent=title;
+  document.getElementById('toolText').textContent=text;
+  document.getElementById('toolOutput').classList.remove('hidden');
+  document.getElementById('toolOutput').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function buildIdeas(){
+  const t=topics(), audience=v('audience','想變更好的女生'), problem=v('problem','不知道怎麼開始');
+  showTool('10 個短影音選題',[
+    `1. 我以前也以為自己沒有特色，直到我發現這件事`,
+    `2. ${audience}最容易卡住的 3 個地方`,
+    `3. 如果你也正在「${problem}」，先做這一步`,
+    `4. 關於${t[0]}，我最後悔太晚知道的 3 件事`,
+    `5. 我的${t[1]}真實日常：其實沒有你想的那麼完美`,
+    `6. 我現在不再相信的 3 個觀念`,
+    `7. 如果重新開始經營，我一定先做這件事`,
+    `8. ${t[2]}讓我改變最大的地方`,
+    `9. 一個沒人告訴你的${t[0]}真相`,
+    `10. 給還在找方向的你：先不要急著變厲害`
+  ].join('\n'));
+}
+function buildHooks(){
+  const t=topics(), problem=v('problem','不知道怎麼開始');
+  showTool('8 個爆款前三秒',[
+    `1. 我發現很多人不是沒內容，是一開始就做錯這件事。`,
+    `2. 先別急著拍，這個錯誤會直接讓人滑走。`,
+    `3. 如果你到現在還在「${problem}」，這支先看完。`,
+    `4. 我以前也以為${t[0]}很難，後來才發現根本不是。`,
+    `5. 這件事我真的太晚知道了。`,
+    `6. 有些人做了半年都沒起色，問題其實在前三秒。`,
+    `7. 你以為大家在看內容，其實第一秒就在決定要不要走。`,
+    `8. 這不是技巧問題，是你根本還沒把自己講清楚。`
+  ].join('\n'));
+}
+function buildChecklist(){
+  showTool('發布前檢核',[
+    `□ 前 3 秒有沒有一句讓人想繼續看的話？`,
+    `□ 這支影片只講一個重點嗎？`,
+    `□ 觀眾看得出來這支是在講給誰聽嗎？`,
+    `□ 有沒有加入你的經歷、觀點或情緒？`,
+    `□ 字幕夠大、節奏沒有拖嗎？`,
+    `□ 中間有沒有至少一次轉折或資訊點？`,
+    `□ 結尾有沒有明確 CTA？`,
+    `□ 封面一眼看得懂這支在講什麼嗎？`
+  ].join('\n'));
+}
+function buildProfileAudit(){
+  const name=v('name','你的名字'), t=topics(), audience=v('audience','你的目標受眾');
+  showTool('IG 帳號健檢',[
+    `1. 名稱：有沒有讓人一眼知道「${name}是誰」？`,
+    `2. Bio：有沒有寫清楚你在幫「${audience}」？`,
+    `3. 內容：最近 9 篇是否至少 70% 圍繞「${t.join('、')}」？`,
+    `4. 封面：是否有一致的字體、語氣與辨識度？`,
+    `5. 精選：新觀眾能不能在 30 秒內認識你？`,
+    `6. CTA：每支內容有沒有告訴觀眾下一步要做什麼？`
+  ].join('\n'));
+}
+
+function buildContentPlan(){
+  const t=topics();
+  showTool('7 天內容企劃',[
+    `DAY 1｜故事型：我為什麼開始分享「${t[0]}」`,
+    `DAY 2｜乾貨型：關於${t[0]}，新手最容易犯的 3 個錯誤`,
+    `DAY 3｜日常型：我的${t[1]}真實一天`,
+    `DAY 4｜共鳴型：如果你最近也在懷疑自己，這段話給你`,
+    `DAY 5｜觀點型：關於${t[2]}，我有一個不太一樣的看法`,
+    `DAY 6｜互動型：你們比較想看 A 還是 B？留言告訴我`,
+    `DAY 7｜總結型：這週我學到最重要的 3 件事`
+  ].join('\n'));
+}
+function buildCTA(){
+  showTool('留言 CTA 產生器',[
+    `收藏型｜怕之後找不到，先收藏起來，下次直接照著做。`,
+    `留言型｜你現在最卡哪一步？留言告訴我。`,
+    `關鍵字型｜想要完整版懶人包，底下留言「定位」。`,
+    `共鳴型｜如果你也有過一樣的感覺，留一個 🤍 讓我知道。`,
+    `追蹤型｜我會繼續分享更多實際做法，想一起成長可以先追蹤。`,
+    `私訊型｜如果你不知道自己適合哪個方向，可以把你的問題私訊給我。`
+  ].join('\n'));
+}
+function makeShareCard(){
+  const type=getCreatorType();
+  const score=calcBrandScore();
+  document.getElementById('shareName').textContent=v('name','我的品牌定位');
+  document.getElementById('shareType').textContent=type.name;
+  document.getElementById('sharePosition').textContent=document.getElementById('positioning').textContent;
+  const w=document.getElementById('sharePillars'); w.innerHTML='';
+  topics().forEach(x=>{const s=document.createElement('span');s.className='pill';s.textContent=x;w.appendChild(s)});
+  document.getElementById('shareScore').textContent=`品牌完成度 ${score}%`;
+  document.getElementById('shareCard').classList.remove('hidden');
+  document.getElementById('shareCard').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+
+function showCreatorStrategy(){
+  const type=getCreatorType();
+  const map={
+    '故事型創作者':[
+      '開頭先丟衝突或改變：以前的我 vs 現在的我',
+      '中段講一個具體事件，不要一次塞太多觀念',
+      '結尾補一句你真正相信的價值觀',
+      '適合系列：我的轉變、POV、那些沒人知道的事'
+    ],
+    '導航型創作者':[
+      '開頭直接講結果：3 步驟、4 個錯誤、1 個重點',
+      '畫面搭配條列、示範或前後對比',
+      '每篇只解決一個問題',
+      '適合系列：懶人包、新手指南、避雷、實測'
+    ],
+    '共感型創作者':[
+      '先講觀眾心裡正在想但沒說出口的話',
+      '多用生活細節與情緒轉折',
+      '不要只安慰，要加入你的觀點',
+      '適合系列：感情、成長、低潮、療癒文字'
+    ],
+    '吸睛型創作者':[
+      '前三秒一定要有反差、八卦感或結果感',
+      '每 2–3 秒安排字幕、畫面或語意變化',
+      '熱門題材要加入你的個人立場，避免只追風',
+      '適合系列：熱門梗、快速口播、反差 POV、挑戰'
+    ]
+  };
+  showTool(`${type.name}｜內容策略`,map[type.name].map((x,i)=>`${i+1}. ${x}`).join('\n'));
+}
+
+function updateSavedSummary(){
+  const done=localStorage.getItem('lingBrandCompleted');
+  if(!done){document.getElementById('savedSummary').textContent='目前還沒有完成測驗。';return;}
+  document.getElementById('savedSummary').textContent =
+    `${v('name','你')}｜${v('identity','內容創作者')}\n主要內容：${topics().join(' × ')}\n目標受眾：${v('audience','尚未填寫')}`;
+  document.getElementById('savedSummary').style.whiteSpace='pre-line';
+}
+function clearData(){
+  if(confirm('確定要清除這台裝置上的品牌資料嗎？')){
+    localStorage.removeItem('lingBrandData'); localStorage.removeItem('lingBrandCompleted');
+    ids.forEach(id=>document.getElementById(id).value='');
+    document.getElementById('format').value='短影音口播';
+    currentStep=1; updateProgress(); updateSavedSummary();
+  }
+}
+loadData();
+updateProgress();
+</script>
+</body>
+</html>
