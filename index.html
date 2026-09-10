@@ -136,7 +136,7 @@
     .bottom-nav{
       position:fixed;bottom:0;left:0;right:0;z-index:40;
       max-width:760px;margin:auto;
-      display:grid;grid-template-columns:repeat(7,1fr);
+      display:grid;grid-template-columns:repeat(8,1fr);
       background:rgba(255,253,251,.97);backdrop-filter:blur(16px);
       border-top:1px solid var(--line);padding:8px 6px calc(8px + env(safe-area-inset-bottom))
     }
@@ -289,6 +289,71 @@
       .bottom-nav button{font-size:9px}.bottom-nav .icon{font-size:16px}
     }
 
+
+/* V8 personal story homepage */
+.personal-home{max-width:720px;margin:0 auto;padding:30px 2px 92px}
+.personal-kicker{font-size:12px;letter-spacing:.18em;font-weight:900;color:#a76f53;margin-bottom:16px}
+.personal-mark{width:74px;height:74px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#d6a17e;color:white;font:24px Georgia,serif;margin:6px 0 26px;box-shadow:0 12px 28px rgba(109,73,58,.12)}
+.personal-title{font-family:"Times New Roman","Noto Serif TC","Songti TC",serif;font-size:39px;line-height:1.28;letter-spacing:-.045em;color:#3c2e2b;margin:0 0 24px}
+.personal-lead{font-size:17px;line-height:1.9;color:#6f5f59;margin:0 0 38px}
+.story-block{padding:8px 0 24px}
+.story-block p{font-size:16px;line-height:2;color:#75645e;margin:0 0 20px}
+.story-block b{color:#40322e}
+.story-quote{margin:30px 0;background:#fff;border-left:4px solid #d59a72;border-radius:0 22px 22px 0;padding:26px 23px;font-family:"Noto Serif TC","Songti TC",serif;font-size:22px;line-height:1.75;color:#44332f;box-shadow:0 16px 38px rgba(91,62,52,.07)}
+.turning-card{margin:22px -2px 38px;padding:34px 27px;border-radius:28px;background:linear-gradient(145deg,#efe0d8,#faf2ed);box-shadow:0 18px 42px rgba(91,62,52,.06)}
+.turning-card span{font-size:10px;letter-spacing:.18em;color:#9e7669;font-weight:900}
+.turning-card h2,.personal-ending h2{font-family:"Times New Roman","Noto Serif TC","Songti TC",serif;font-size:30px;line-height:1.4;color:#44332f;margin:13px 0}
+.turning-card p{font-size:16px;line-height:1.9;color:#725f58;margin:0}
+.personal-ending{text-align:center;margin:24px 0 32px;padding:40px 18px;background:#fffaf7;border:1px solid #ecddd6;border-radius:28px}
+.personal-ending .ending-spark{font-size:27px;color:#b88d81;margin-bottom:10px}
+.personal-ending p{line-height:1.9;color:#75645e}
+@media(max-width:420px){.personal-title{font-size:34px}.personal-lead{font-size:16px}.story-quote{font-size:20px}.turning-card h2,.personal-ending h2{font-size:27px}}
+
+
+/* V8 sales conversion section */
+.sales-story{max-width:720px;margin:0 auto;padding-bottom:90px}
+.sales-section{padding:54px 2px 62px;border-bottom:1px solid var(--line)}
+.sales-kicker{font-size:12px;letter-spacing:.12em;font-weight:900;color:#a76d4d;margin-bottom:18px}
+.sales-title{font-family:"Times New Roman","Noto Serif TC","Songti TC",serif;font-size:38px;line-height:1.3;letter-spacing:-.04em;color:#3e302c;margin:0 0 25px}
+.sales-title.small{font-size:32px}
+.sales-copy{font-size:16px;line-height:1.95;color:#76645e;margin:0 0 20px}
+.sales-copy b{color:#44332f}
+.growth-highlight{background:#fff;border-radius:26px;padding:28px 24px;margin:30px 0;box-shadow:0 15px 36px rgba(89,62,52,.07);text-align:center}
+.growth-highlight span{font-size:10px;letter-spacing:.18em;color:#a98a7f;font-weight:900}
+.growth-highlight strong{display:block;font-family:Georgia,"Noto Serif TC",serif;font-size:27px;line-height:1.45;color:#a9633d;margin:12px 0}
+.growth-highlight p{font-size:14px;line-height:1.7;color:#806d65;margin:0}
+.mini-note{text-align:center;font-family:"Noto Serif TC","Songti TC",serif;font-size:18px;line-height:1.8;color:#57443e;padding:18px}
+.pain-bg,.audience-bg{background:linear-gradient(180deg,rgba(248,237,226,.62),rgba(255,250,247,.08));margin-left:-18px;margin-right:-18px;padding-left:22px;padding-right:22px}
+.sales-pains{display:grid;gap:13px}
+.sales-pains>div{background:#fff;border-radius:20px;padding:20px;display:grid;grid-template-columns:38px 1fr;gap:10px;box-shadow:0 9px 24px rgba(89,62,52,.05)}
+.sales-pains b{font-family:Georgia,serif;color:#d5946a;font-size:18px}
+.sales-pains span{font-size:15px;line-height:1.75;color:#4d3d38}
+.sales-quote{margin:30px 0 0;text-align:center;font-family:"Noto Serif TC","Songti TC",serif;font-size:19px;line-height:1.8;color:#503c36}
+.gain-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:28px}
+.gain-grid>div{background:#fff;border-radius:21px;padding:20px 17px;box-shadow:0 9px 24px rgba(89,62,52,.05)}
+.gain-grid i{display:block;color:#bc8775;font-style:normal;margin-bottom:9px}
+.gain-grid b{display:block;font-size:16px;color:#44342f;margin-bottom:7px}
+.gain-grid span{font-size:13px;line-height:1.65;color:#806d66}
+.audience-list{display:grid;gap:13px;margin-top:28px}
+.audience-list>div{background:#fff;border-radius:21px;padding:20px;display:grid;grid-template-columns:48px 1fr;gap:10px;align-items:center}
+.audience-list em{font:23px Georgia,serif;color:#d6976f;font-style:normal}
+.audience-list b{display:block;color:#44342f;font-size:16px;margin-bottom:5px}
+.audience-list small{display:block;color:#806e67;font-size:13px;line-height:1.55}
+.price-section{text-align:center;padding-top:62px}
+.price-badge{display:inline-block;background:#a96847;color:white;padding:7px 16px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.08em}
+.price-now{font:56px Georgia,serif;color:#a85f39;margin:15px 0 4px}
+.price-original{font-size:14px;color:#87756e}.price-original s{font-size:18px}
+.price-card{text-align:left;background:#fff;border-radius:26px;padding:25px 24px;margin:30px 0 24px;box-shadow:0 16px 38px rgba(89,62,52,.07)}
+.price-card div{padding:9px 0;font-size:15px;color:#4c3b36;border-bottom:1px solid #f2e8e3}
+.price-card div:last-child{border-bottom:0}
+.price-message{font-size:15px;line-height:1.8;color:#75635d;margin:26px 0}
+.line-buy{display:flex;align-items:center;justify-content:center;gap:13px;text-decoration:none;background:#24c45a;color:#fff;border-radius:20px;padding:17px 18px;box-shadow:0 14px 28px rgba(36,196,90,.18)}
+.line-buy .line-circle{width:45px;height:45px;border-radius:50%;background:white;color:#20b752;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900}
+.line-buy b,.line-buy small{display:block;text-align:left}.line-buy b{font-size:17px}.line-buy small{font-size:11px;margin-top:3px;opacity:.9}
+.line-hint{font-size:10px;color:#aa9891;margin:11px 0 0}
+.sales-signoff{margin-top:36px;font-size:11px;letter-spacing:.13em;color:#a18b83}
+@media(max-width:420px){.sales-title{font-size:34px}.sales-title.small{font-size:29px}.gain-grid{grid-template-columns:1fr 1fr}.price-now{font-size:49px}}
+
 </style>
 </head>
 <body>
@@ -308,29 +373,45 @@
     <div class="tiny">@ling_02_02</div>
   </header>
 
-  <section id="home" class="page active">
-    <div class="hero">
-      <span class="badge">PERSONAL BRAND SYSTEM</span>
-      <h1>你不是沒有特色，只是還沒看見自己的價值。</h1>
-      <p class="lead">把你的故事、個性與經歷，整理成一個讓人記得住、也真正像你的品牌。</p>
-      <p class="hero-note">適合：剛開始經營自媒體、內容很散、想找到定位的人。</p>
+  
+<section id="home" class="page active">
+  <div class="personal-home">
+    <div class="personal-kicker">ABOUT LING · 關於我</div>
+    <div class="personal-mark">LING</div>
+    <h1 class="personal-title">我依然是護理師，<br>但我不再只有<br>「護理師」這一個答案。</h1>
+    <p class="personal-lead">哈囉大家好，我是伊玲 🤍<br>一個從護理師，慢慢走向自媒體、找回自己人生選擇權的人。</p>
+
+    <div class="story-block">
+      <p>畢業後，我待過<b>醫美、中醫到外科門診</b>，以前總覺得自己好像只能一直走護理這條路。</p>
+      <p>直到後來我開始學剪輯、經營 IG、接觸自媒體，才發現——</p>
+      <div class="story-quote">原來我走過的路、<br>我的故事和想法，<br><b>本身就能成為價值。</b></div>
+      <p>我不需要等自己很厲害、很有專長才開始，而是在分享的過程中，慢慢找到自己的定位與差異。</p>
     </div>
 
-    <div class="feature-grid">
-      <div class="feature"><b>創作者人格</b><span>找到你最自然、最有優勢的表達方式。</span></div>
-      <div class="feature"><b>品牌完成度</b><span>看見目前最需要補強的定位環節。</span></div>
-      <div class="feature"><b>內容雷達</b><span>分析故事力、專業力、共感力與吸睛力。</span></div>
-      <div class="feature"><b>30 天題庫</b><span>依照你的內容支柱直接生成題目。</span></div>
-      <div class="feature"><b>BIO 人格分析</b><span>用 IG 黃金 4 行公式分析自介，找出轉粉卡點。</span></div>
-      <div class="feature"><b>BIO 優化器</b><span>依照創作者人格、受眾與內容支柱生成新版自介。</span></div>
+    <div class="turning-card">
+      <span>MY TURNING POINT</span>
+      <h2>我決定把時間<br>拿回自己手上。</h2>
+      <p>後來我也決定離開原本的工作，因為我想把時間拿回來，累積真正屬於自己的<b>能力、內容與個人品牌。</b></p>
     </div>
 
-    <button class="cta" onclick="go('quiz')">開始定位測驗 →</button>
-      <button class="cta ghost" onclick="go('aboutLing')">了解這份工具與我的故事</button>
-    <div class="notice">資料只儲存在你的瀏覽器，不需要註冊。</div>
-  </section>
+    <div class="story-block">
+      <p>現在的我還在學、還在嘗試，但至少我越來越確定自己想走的方向。</p>
+      <p>未來我希望不只是經營自媒體，而是把自己學到的、走過的路分享出去，陪伴那些跟以前的我一樣<b>迷惘、不知道怎麼開始的人。</b></p>
+    </div>
 
-  <section id="quiz" class="page">
+    <div class="personal-ending">
+      <div class="ending-spark">✦</div>
+      <h2>你不用等到很厲害，<br>才有資格開始。</h2>
+      <p>如果你也正在找自己的方向，<br><b>那我們一起邊走、邊找到答案。</b> 🤍</p>
+    </div>
+
+    <button class="cta" onclick="go('growthStory')">從我的成長，看看這套工具 →</button>
+    <button class="cta ghost" onclick="go('quiz')">直接開始找我的品牌</button>
+    <div class="signature">@ling_02_02 · 找到更好的自己</div>
+  </div>
+</section>
+
+<section id="quiz" class="page">
     <div class="section-head">
       <h2>品牌定位測驗</h2>
       <p>越真實越有用，不需要寫得像履歷。</p>
@@ -526,7 +607,93 @@
   </section>
 
 
-  <section id="bioLab" class="page">
+  
+<section id="growthStory" class="page">
+  <div class="sales-story">
+
+    <div class="sales-section">
+      <div class="sales-kicker">不是突然變厲害，是慢慢找到方法</div>
+      <h1 class="sales-title">從輪播幾乎沒人看，<br>到現在每一篇<br>都慢慢翻了好幾倍。</h1>
+      <p class="sales-copy">剛開始經營 IG 的時候，我也不是一發文就有人看。做了很多內容、花很多時間排版，發出去卻只有一點點觀看，甚至會開始懷疑：<b>是不是我的內容根本沒有人想看？</b></p>
+      <p class="sales-copy">但我沒有停在「是不是我不適合」這件事上，而是開始重新研究定位、內容結構、前三秒、受眾到底在意什麼。</p>
+
+      <div class="growth-highlight">
+        <span>CONTENT GROWTH</span>
+        <strong>從沒人看 → 慢慢翻好幾倍</strong>
+        <p>當定位越來越清楚，輪播的觸及、互動開始增加，粉絲數也跟著慢慢往上走。</p>
+      </div>
+
+      <div class="mini-note">我不是因為一開始就很會，<br>而是做了之後，才慢慢知道怎麼做得更好。</div>
+    </div>
+
+    <div class="sales-section pain-bg">
+      <div class="sales-kicker">這套工具，是寫給正在卡住的你</div>
+      <h2 class="sales-title small">你是不是也<br>遇過這些狀況？</h2>
+      <div class="sales-pains">
+        <div><b>01</b><span>想開始經營 IG，卻每天都在想「我到底可以發什麼？」</span></div>
+        <div><b>02</b><span>明明很認真做內容，發出去卻沒什麼人看，也不知道問題在哪。</span></div>
+        <div><b>03</b><span>問 ChatGPT 一堆問題，答案看起來都很完整，卻怎麼看都不像自己。</span></div>
+        <div><b>04</b><span>什麼都想分享，結果帳號看起來很散，別人進首頁還是不知道你是誰。</span></div>
+        <div><b>05</b><span>想做副業、經營個人品牌，卻覺得自己「沒有專長、沒有特色」。</span></div>
+        <div><b>06</b><span>已經經營一段時間，卻越做越沒靈感，不知道下一篇還能說什麼。</span></div>
+      </div>
+      <div class="sales-quote">你不是沒有內容，<br><b>你只是還沒有把自己整理成「別人看得懂的品牌」。</b></div>
+    </div>
+
+    <div class="sales-section">
+      <div class="sales-kicker">這套工具可以帶給你什麼？</div>
+      <h2 class="sales-title small">不是再給你一堆答案，<br>而是幫你找到<br>屬於自己的答案。</h2>
+      <div class="gain-grid">
+        <div><i>✦</i><b>找到個人定位</b><span>整理你的經歷、個性、價值觀與優勢。</span></div>
+        <div><i>✦</i><b>找到內容方向</b><span>建立內容支柱，不再每天從零想題材。</span></div>
+        <div><i>✦</i><b>更懂你的受眾</b><span>知道你在跟誰說話，以及他們為什麼留下。</span></div>
+        <div><i>✦</i><b>讓內容更好看懂</b><span>從前三秒、CTA 到短影音題材，降低創作卡關。</span></div>
+        <div><i>✦</i><b>優化 IG 首頁</b><span>BIO 人格分析＋黃金 4 行，讓別人快速認識你。</span></div>
+        <div><i>✦</i><b>建立自己的品牌</b><span>不需要複製別人，也能長出自己的辨識度。</span></div>
+      </div>
+    </div>
+
+    <div class="sales-section audience-bg">
+      <div class="sales-kicker">適合你，如果你是</div>
+      <h2 class="sales-title small">想開始改變，<br>卻不知道第一步<br>該往哪裡走的人。</h2>
+      <div class="audience-list">
+        <div><em>01</em><span><b>自媒體新手</b><small>想經營 IG，但不知道從哪裡開始。</small></span></div>
+        <div><em>02</em><span><b>正在卡定位的人</b><small>發了很多內容，帳號卻還是沒有明確方向。</small></span></div>
+        <div><em>03</em><span><b>上班族／想發展副業的人</b><small>想慢慢累積真正屬於自己的能力與資產。</small></span></div>
+        <div><em>04</em><span><b>美業、生活、自媒體創作者</b><small>想讓內容不只好看，而是真的吸引對的人。</small></span></div>
+        <div><em>05</em><span><b>覺得自己「沒特色」的人</b><small>想重新看見自己的經歷其實很有價值。</small></span></div>
+      </div>
+    </div>
+
+    <div class="sales-section price-section">
+      <div class="price-badge">首發限定</div>
+      <div class="price-now">NT$899</div>
+      <div class="price-original">原價 <s>NT$1,299</s>・現省 NT$400</div>
+
+      <div class="price-card">
+        <div>✓ 個人品牌定位＋創作者人格</div>
+        <div>✓ 品牌完成度＋內容方向分析</div>
+        <div>✓ 短影音題材＋爆款前三秒</div>
+        <div>✓ 7 天企劃＋30 天內容地圖</div>
+        <div>✓ IG BIO 人格分析＋黃金 4 行</div>
+        <div>✓ CTA、IG 健檢與變現方向</div>
+        <div>✓ 一次買斷・持續更新</div>
+      </div>
+
+      <p class="price-message">如果你也不想再一直站在原地想「我到底能做什麼」，<br><b>這一次，先從看懂自己開始。</b></p>
+
+      <a class="line-buy" id="lineBuyBtn" href="#" onclick="return openLinePurchase();">
+        <span class="line-circle">LINE</span>
+        <span><b>立即領取這套工具</b><small>點我加入官方 LINE</small></span>
+      </a>
+      <p class="line-hint">※ LINE 連結可在程式內替換成你的官方 LINE 網址</p>
+
+      <div class="sales-signoff">LING · 找到更好的自己 🤍</div>
+    </div>
+  </div>
+</section>
+
+<section id="bioLab" class="page">
     <div class="section-head">
       <h2>BIO 人格分析</h2>
       <p>你的 IG 自介不是履歷，而是觀眾進主頁後，幾秒內決定「要不要追蹤你」的門面。</p>
@@ -676,7 +843,7 @@
         <div class="eyebrow">LING BRAND LAB</div>
         <h2 class="editorial-title small">你不需要先變得很厲害<br>才有資格開始</h2>
         <p class="landing-copy center">你的經歷、你在意的事、你走過的路，本來就可以成為內容。<br><b>先找到自己，再讓對的人找到你。</b></p>
-        <button class="cta landing-cta" onclick="go('quiz')">開始找到我的品牌 →</button>
+        <button class="cta landing-cta" onclick="go('growthStory')">看看這套工具適不適合我 →</button>
         <button class="cta ghost" onclick="go('bioLab')">先分析我的 IG BIO</button>
         <div class="signature">@ling_02_02 · 把真實活成自己的品牌</div>
       </div>
@@ -701,6 +868,7 @@
     <button data-page="tools" onclick="go('tools')"><span class="icon">▦</span>工具</button>
     <button data-page="planner" onclick="go('planner')"><span class="icon">◫</span>30天</button>
     <button data-page="bioLab" onclick="go('bioLab')"><span class="icon">✎</span>BIO</button>
+    <button data-page="growthStory" onclick="go('growthStory')"><span class="icon">♡</span>適合誰</button>
     <button data-page="aboutLing" onclick="go('aboutLing')"><span class="icon">✦</span>介紹</button>
     <button data-page="profile" onclick="go('profile')"><span class="icon">☺</span>我的</button>
   </nav>
@@ -1145,5 +1313,14 @@ loadData();
 updateProgress();
 render30Days();
 </script>
+
+<script>
+function openLinePurchase(){
+  const LINE_PURCHASE_URL = "https://line.me/ti/p/Vfr2_tJJK7";
+  window.location.href = LINE_PURCHASE_URL;
+  return false;
+}
+</script>
+
 </body>
 </html>
