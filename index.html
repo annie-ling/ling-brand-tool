@@ -396,7 +396,7 @@
 .line-member-link{display:block;text-decoration:none;color:#8e685a;background:transparent;padding:10px 2px;font-size:12px;font-weight:600;margin-top:7px}
 .line-member-link small{display:block;font-size:11px;font-weight:400;margin-top:5px;line-height:1.6;color:#92776a}
 .line-help-fab{position:fixed;bottom:84px;right:14px;z-index:9200;border-radius:999px;background:#8e685a;color:white;text-decoration:none;box-shadow:0 8px 24px #74564b44;padding:11px 16px;font-size:13px;font-weight:800;display:none}
-.line-help-fab.show{display:block}
+.line-help-fab.show{display:none}
 </style>
 
 <meta name="ling-version" content="11-line-member">
@@ -404,6 +404,10 @@
 .v12-hero{padding:25px 20px;background:linear-gradient(135deg,#f5e8df,#fff9f4);border:1px solid #e6d4c8;border-radius:24px;margin:14px 0 18px}.v12-hero h1{font-family:"Noto Serif TC",serif;color:#513c34;font-size:27px;margin:12px 0}.v12-hero p,.v12-muted{color:#8e766b;font-size:13px;line-height:1.7}.v12-eyebrow{font-size:10px;letter-spacing:.2em;font-weight:900;color:#a37b6c}.v12-date{color:#9d7d70;font-size:12px;margin-top:12px}.v12-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:16px 0}.v12-stat{background:#fffaf7;border:1px solid #eadbd1;border-radius:16px;padding:16px 6px;text-align:center}.v12-stat b{display:block;font-size:23px;color:#866154}.v12-stat span{display:block;font-size:11px;color:#917b70;margin-top:5px}.v12-panel{background:#fffaf7;border:1px solid #e7d7ce;border-radius:21px;padding:20px;margin:15px 0}.v12-panel h2{font-size:19px;color:#553f35;margin:8px 0 14px}.v12-panel label{display:block;font-size:13px;font-weight:700;color:#70564c;margin:15px 0 7px}.v12-panel input,.v12-panel textarea,.v12-panel select{width:100%;box-sizing:border-box;border:1px solid #ddc9bf;background:white;border-radius:12px;padding:12px;font-size:15px;color:#513e36}.v12-panel textarea{min-height:90px}.v12-primary,.v12-outline{display:block;width:100%;box-sizing:border-box;text-align:center;padding:13px;border-radius:13px;margin-top:13px;font-size:13px;font-weight:800;cursor:pointer}.v12-primary{background:#906b5d;border:0;color:white}.v12-primary:disabled{opacity:.55}.v12-outline{border:1px solid #cdb6a9;background:transparent;color:#805f52}.v12-link{text-decoration:none}.v12-idea,.v12-item{border-top:1px solid #eadcd2;padding:13px 0;font-size:14px;line-height:1.7;color:#604a41}.v12-idea button,.v12-item button{border:1px solid #d8c3b6;background:#f7ede6;color:#765648;border-radius:10px;padding:8px 10px;margin:6px 6px 0 0}.v12-small{font-size:11px;color:#987c6e}.v12-nav{overflow-x:auto}.v12-nav button{min-width:0;font-size:10px}.v12-nav .icon{font-size:19px}
 </style>
 <meta name="ling-version" content="12-daily-workspace">
+<style>
+.v13-head{border-radius:26px;background:linear-gradient(125deg,#f0e1d8,#fff9f5);padding:28px 22px;margin:6px 0 16px}.v13-head h1{font-family:"Noto Serif TC",serif;font-size:32px;line-height:1.3;color:#523b32}.v13-head p,.v13-tip{color:#806e64;font-size:13px;line-height:1.75}.v13-box{background:#fffdfa;border:1px solid #e8d9d0;border-radius:22px;padding:21px;margin:16px 0;box-shadow:0 7px 20px #5c3e2b0c}.v13-box h2{font-size:21px;margin:10px 0}.v13-box label{font-size:13px;margin:15px 0 6px}.v13-box select{width:100%}.v13-btn{display:block;text-align:center;text-decoration:none;background:#8e6c5e;color:#fff;border:0;border-radius:13px;padding:14px;width:100%;font-weight:800;margin-top:13px}.v13-btn.alt{background:#eaddd5;color:#624c41}.v13-line{background:#638a6b}.v13-actions{display:grid;gap:11px}.v13-actions button{background:#f8f0ea;border:1px solid #e6d4c9;border-radius:15px;padding:17px;text-align:left;color:#5b4338;font-weight:800}.v13-actions span{display:block;font-size:12px;font-weight:400;margin-top:5px;color:#897166}.v13-output{white-space:pre-wrap;line-height:1.85;font-size:14px;color:#4b3d37;background:#fbf5f0;border-radius:15px;padding:18px;margin:12px 0}.v13-row{display:flex;gap:8px;flex-wrap:wrap}.v13-row button{flex:1;border:1px solid #ddc9bd;background:#f7ece5;color:#694f41;padding:11px;border-radius:11px;font-weight:700}.v13-plan{border-top:1px solid #ecddd5;padding:13px 0}.v13-plan button{border:0;background:#f2e5dc;color:#6d5143;border-radius:9px;padding:8px;margin-top:8px}
+</style>
+<meta name="ling-version" content="13-content-assistant">
 </head>
 <body>
 
@@ -425,7 +429,7 @@
 
 
 
-<div id="welcome" class="welcome">
+<div id="welcome" class="welcome" style="display:none">
   <div class="welcome-inner">
     <div class="welcome-mark">LING｜找到你的品牌</div>
     <h2>你不是沒有特色，<br>只是還沒看見自己的價值。</h2>
@@ -442,12 +446,16 @@
 
   
 <section id="home" class="page active">
-  <div class="v12-hero"><div class="v12-eyebrow">LING · DAILY STUDIO</div><h1>我的品牌工作室 🤍</h1><p>每天前進一點點，慢慢把自己活成喜歡的樣子。</p><div class="v12-date" id="v12Today"></div></div>
-  <div class="v12-grid"><div class="v12-stat"><b id="v12DoneCount">0</b><span>累積完成任務</span></div><div class="v12-stat"><b id="v12IdeaCount">0</b><span>收藏靈感</span></div><div class="v12-stat"><b id="v12DraftCount">0</b><span>創作筆記</span></div></div>
-  <div class="v12-panel"><div class="v12-eyebrow">TODAY'S MISSION</div><h2>今天的小任務</h2><p id="v12Mission"></p><button class="v12-primary" id="v12Complete" onclick="v12CompleteMission()">完成今日任務 ✓</button><div class="v12-muted" id="v12MissionState"></div></div>
-  <div class="v12-panel"><div class="v12-eyebrow">CONTENT IDEAS</div><h2>今日 3 個內容靈感</h2><p class="v12-muted">依照你的品牌定位產生，不需額外 AI 費用。</p><div id="v12Ideas"></div><button class="v12-outline" onclick="go('studio')">前往內容創作工作台 →</button></div>
-  <div class="v12-panel"><h2>我的創作進度</h2><div id="v12Progress"></div><button class="v12-outline" onclick="go('studio')">整理我的內容 →</button></div>
-  <div class="v12-panel"><h2>我的品牌定位</h2><p id="v12BrandSummary" class="v12-muted">完成定位測驗後，這裡會顯示你的品牌方向。</p><button class="v12-outline" onclick="go('quiz')">查看／編輯定位 →</button></div>
+<div class="v13-head"><span class="v12-eyebrow">LING · CONTENT ASSISTANT</span><h1>今天的內容，<br>讓 LING 幫你完成。🤎</h1><p>不用從空白開始。選好方向，直接得到可編輯、可複製的完整初稿。</p></div>
+<div class="v13-box"><div class="v12-eyebrow">01 · 你的品牌設定</div><h2>先讓我認識你的內容</h2><p class="v13-tip">只要設定一次，下次打開會自動帶入。</p>
+<label>內容領域</label><select id="v13Niche"><option>情侶感情</option><option>美妝保養</option><option>個人成長</option><option>創業副業</option><option>理財入門</option><option>生活分享</option><option>健康知識</option></select>
+<label>主要受眾</label><select id="v13Audience"><option>25–35 歲女性</option><option>18–25 歲女性</option><option>上班族</option><option>自媒體新手</option><option>情侶族群</option><option>想改善生活的人</option></select>
+<label>表達風格</label><select id="v13Tone"><option>真實共鳴</option><option>八卦吸睛</option><option>溫柔療癒</option><option>專業實用</option><option>有個性觀點</option></select>
+<label>這次想達成</label><select id="v13Goal"><option>增加追蹤</option><option>提高收藏</option><option>增加留言</option><option>建立信任</option></select>
+<button class="v13-btn alt" onclick="v13SavePrefs()">儲存我的品牌設定 ✓</button></div>
+<div class="v13-box"><div class="v12-eyebrow">02 · 一鍵完成</div><h2>今天想產生什麼？</h2><div class="v13-actions"><button onclick="v13Generate('reel')">🎬 完整短影音腳本<span>鉤子＋逐段口播＋畫面＋CTA</span></button><button onclick="v13Generate('carousel')">📚 完整輪播貼文<span>封面＋6 張內頁＋貼文文案</span></button><button onclick="v13Plan()">📅 7 天內容計畫<span>每天都能展開完整初稿</span></button></div><p class="v13-tip">本版採品牌情境模板自動組合，不是即時 AI；請依真實經歷調整內容後再發布。</p></div>
+<div id="v13Output" class="v13-box" style="display:none" aria-live="polite"></div>
+<div class="v13-box"><h2>我的已儲存內容</h2><div id="v13Saved"></div></div>
 </section>
 <section id="aboutLing" class="page">
   <div class="personal-home">
@@ -775,7 +783,7 @@
   <section id="studio" class="page"><div class="section-head"><h2>內容創作工作台</h2><p>把靈感變成真正能發布的內容。</p></div><div class="v12-panel"><label>內容題目</label><input id="v12Title" placeholder="這篇想分享什麼？"><label>前三秒吸睛開頭</label><textarea id="v12Hook" placeholder="讓人想繼續看的第一句話"></textarea><label>內容／腳本</label><textarea id="v12Body" rows="5" placeholder="寫下重點、故事與轉折"></textarea><label>CTA 行動呼籲</label><textarea id="v12Cta" placeholder="留言、收藏、分享或追蹤"></textarea><label>製作狀態</label><select id="v12Status"><option value="構思中">構思中</option><option value="製作中">製作中</option><option value="已發布">已發布</option></select><button class="v12-primary" onclick="v12SaveDraft()">儲存創作筆記</button></div><div class="v12-panel"><h2>我的創作筆記</h2><div id="v12DraftList"></div></div></section>
 <section id="favorites" class="page"><div class="section-head"><h2>我的靈感收藏</h2><p>收藏想做的題目，隨時回來寫。</p></div><div class="v12-panel" id="v12FavoriteList"></div></section>
 <section id="growth" class="page"><div class="section-head"><h2>品牌成長紀錄</h2><p>記錄進步，不只看數字，也看見自己。</p></div><div class="v12-panel"><label>日期</label><input type="date" id="v12RecordDate"><label>目前粉絲數</label><input type="number" min="0" id="v12Followers" placeholder="例如 500"><label>本週觸及人數</label><input type="number" min="0" id="v12Reach" placeholder="例如 2000"><label>本週互動次數</label><input type="number" min="0" id="v12Engagement" placeholder="例如 120"><label>這週最大的收穫</label><textarea id="v12Reflection" placeholder="哪個內容讓你最有感？學到什麼？"></textarea><button class="v12-primary" onclick="v12SaveGrowth()">儲存成長紀錄</button></div><div class="v12-panel"><h2>歷史紀錄</h2><div id="v12GrowthList"></div></div></section>
-<section id="profile" class="page">
+<section id="profile" class="page"><div class="v13-box"><h2>會員支援</h2><p class="v13-tip">需要序號協助或換機？由官方 LINE 客服協助。</p><a class="v13-btn v13-line" href="https://lin.ee/YsBIviw5" target="_blank" rel="noopener noreferrer">聯繫 LING 官方 LINE ↗</a></div>
     <div class="section-head">
       <h2>我的品牌檔案</h2>
       <p>這台裝置會記住你填過的資料。</p>
@@ -789,7 +797,7 @@
 
   <nav class="bottom-nav v12-nav">
     <button data-page="home" class="active" onclick="go('home')"><span class="icon">⌂</span>工作室</button>
-    <button data-page="studio" onclick="go('studio')"><span class="icon">✎</span>創作</button>
+    <button data-page="studio" onclick="go('studio')"><span class="icon">✎</span>編輯台</button>
     <button data-page="favorites" onclick="go('favorites')"><span class="icon">♡</span>收藏</button>
     <button data-page="growth" onclick="go('growth')"><span class="icon">◫</span>成長</button>
     <button data-page="tools" onclick="go('tools')"><span class="icon">▦</span>工具</button>
@@ -1353,6 +1361,37 @@ function v12SaveGrowth(){const d=v12Load(),date=document.getElementById('v12Reco
 function v12DeleteGrowth(date){if(!confirm('確定刪除這天的紀錄？'))return;const d=v12Load();d.growth=d.growth.filter(x=>x.date!==date);v12Save(d);v12Render()}
 function v12Render(){const d=v12Load(),date=v12Date();const set=(id,s)=>{const el=document.getElementById(id);if(el)el.innerHTML=s};set('v12Today',date);set('v12DoneCount',Object.keys(d.done).filter(k=>d.done[k]).length);set('v12IdeaCount',d.favorites.length);set('v12DraftCount',d.drafts.length);set('v12Mission',v12Safe(v12Missions[v12Index()%7]));const done=!!d.done[date],btn=document.getElementById('v12Complete');if(btn){btn.disabled=done;btn.textContent=done?'今天已完成 ✓':'完成今日任務 ✓'}set('v12MissionState',done?'今天的努力已經被記下來了 🤍':'每天一小步，就會看見累積的力量。');set('v12Ideas',v12IdeaData().map(s=>`<div class="v12-idea">${s}<div><button onclick="v12ToggleFavorite(decodeURIComponent('${encodeURIComponent(s)}'))">${d.favorites.includes(s)?'♥ 已收藏':'♡ 收藏'}</button><button onclick="v12UseIdea(decodeURIComponent('${encodeURIComponent(s)}'))">開始寫 →</button></div></div>`).join(''));set('v12Progress',`<p class="v12-muted">構思中 ${d.drafts.filter(x=>x.status==='構思中').length}　·　製作中 ${d.drafts.filter(x=>x.status==='製作中').length}　·　已發布 ${d.drafts.filter(x=>x.status==='已發布').length}</p>`);let brand={};try{brand=JSON.parse(localStorage.getItem('lingBrandDataV5')||'{}')||{}}catch(e){}set('v12BrandSummary',brand.identity||brand.audience?`定位：${v12Safe(brand.identity||'探索中')}<br>受眾：${v12Safe(brand.audience||'尚未填寫')}`:'完成定位測驗後，這裡會顯示你的品牌方向。');set('v12FavoriteList',d.favorites.length?d.favorites.map(s=>`<div class="v12-item">${v12Safe(s)}<div><button onclick="v12UseIdea(decodeURIComponent('${encodeURIComponent(s)}'))">開始寫</button><button onclick="v12ToggleFavorite(decodeURIComponent('${encodeURIComponent(s)}'))">取消收藏</button></div></div>`).join(''):'目前沒有收藏的靈感，回到工作室收藏今天的題目吧。');set('v12DraftList',d.drafts.length?d.drafts.map(x=>`<div class="v12-item"><b>${v12Safe(x.title)}</b><div class="v12-small">${v12Safe(x.status)} · ${v12Safe(x.date)}</div><button onclick="v12EditDraft(${x.id})">編輯</button><button onclick="v12DeleteDraft(${x.id})">刪除</button></div>`).join(''):'還沒有創作筆記，從第一個想法開始吧。');set('v12GrowthList',d.growth.length?d.growth.map(x=>`<div class="v12-item"><b>${v12Safe(x.date)}</b><p class="v12-small">粉絲 ${v12Safe(x.followers||'—')} · 觸及 ${v12Safe(x.reach||'—')} · 互動 ${v12Safe(x.engagement||'—')}</p><p>${v12Safe(x.reflection)}</p><button onclick="v12DeleteGrowth('${x.date}')">刪除</button></div>`).join(''):'還沒有成長紀錄，從這週開始記下你的進步。');const inp=document.getElementById('v12RecordDate');if(inp&&!inp.value)inp.value=date}
 document.addEventListener('DOMContentLoaded',v12Render);
+</script>
+<script>
+const V13_PREF='lingV13Preferences',V13_SAVED='lingV13Saved';
+const V13_TOPICS={
+'情侶感情':['安全感不是靠報備','感情裡最容易忽略的溝通','長久關係的相處默契','吵架後怎麼重新靠近','分享欲為什麼重要','愛自己和愛對方的平衡','感情裡說到做到的重要'],
+'美妝保養':['保養順序常見誤區','新手最容易忽略的清潔細節','挑選保養品的判斷方式','敏感時如何精簡保養','保養前後觀察紀錄','不必買很多的保養習慣','讓保養更容易持續的方法'],
+'個人成長':['別等準備好才開始','害怕失敗時可以做什麼','如何找到自己的優勢','拖延時先做最小一步','比較心態如何影響自己','建立自己的生活節奏','學會為選擇負責'],
+'創業副業':['第一個作品比完美重要','接案前一定要確認的事情','如何整理自己的服務內容','報價時容易忽略的成本','第一次合作的溝通流程','如何累積作品案例','把技能變成可交付服務'],
+'理財入門':['開始記帳的第一步','分清想要與需要','如何設定緊急預備金','理財目標怎麼拆解','先理解風險再投資','避免衝動消費的小習慣','每月財務檢視怎麼做'],
+'生活分享':['平凡日常怎麼拍出故事','三個值得記錄的生活片段','一個小習慣帶來的改變','日常分享如何有共鳴','不必完美的生活紀錄','讓日子更舒服的小方法','我的一週生活觀察'],
+'健康知識':['建立可持續的作息','日常健康資訊如何查證','長時間用眼的休息提醒','如何準備就醫問題','養成喝水提醒的方法','規律活動的入門方式','避免健康資訊迷思']};
+let v13Current='',v13PlanData=[];
+function v13Prefs(){try{return JSON.parse(localStorage.getItem(V13_PREF)||'{}')}catch(e){return {}}}
+function v13SavePrefs(silent=false){const d={niche:document.getElementById('v13Niche').value,audience:document.getElementById('v13Audience').value,tone:document.getElementById('v13Tone').value,goal:document.getElementById('v13Goal').value};localStorage.setItem(V13_PREF,JSON.stringify(d));if(!silent)alert('品牌設定已儲存 🤎');return d}
+function v13Load(){const d=v13Prefs();for(const [k,id] of Object.entries({niche:'v13Niche',audience:'v13Audience',tone:'v13Tone',goal:'v13Goal'})){if(d[k])document.getElementById(id).value=d[k]}v13RenderSaved()}
+function v13Escape(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function v13Script(kind,day=0){const d=v13SavePrefs(true),topics=V13_TOPICS[d.niche]||V13_TOPICS['個人成長'];const topic=topics[(day+Math.floor(Date.now()/86400000))%topics.length];const hook=({'八卦吸睛':`我後來才發現，關於「${topic}」，很多人都搞錯重點了。`,'溫柔療癒':`如果你也正在煩惱「${topic}」，這段話想送給你。`,'專業實用':`關於「${topic}」，先記住這 3 個重點。`,'有個性觀點':`我不認為「${topic}」只靠努力就夠了。`,'真實共鳴':`你有沒有發現，「${topic}」其實比想像中更難？`})[d.tone];const cta=({'增加追蹤':'想看更多這類實用分享，追蹤我，下一篇繼續聊。','提高收藏':'把這篇收藏起來，下次需要時就能回來看。','增加留言':'你最有感的是哪一點？留言跟我分享。','建立信任':'如果你也經歷過，歡迎分享你的做法，我們一起交流。'})[d.goal];
+const points=[`先辨認自己目前遇到的情況，不急著照搬別人的做法。`,`把「${topic}」拆成一個今天就能做到的小行動。`,`實際試一次、觀察反應，再決定要不要調整。`];
+let text='';if(kind==='carousel')text=`【輪播主題】${topic}\n\n第 1 張｜封面\n${hook}\n\n第 2 張｜引起共鳴\n你是不是也遇過：明明很在意「${topic}」，卻不知道從哪裡開始？\n\n第 3 張｜常見卡點\n最大的困難往往不是不知道重要，而是想一次做到完美。\n\n第 4 張｜方法一\n${points[0]}\n\n第 5 張｜方法二\n${points[1]}\n\n第 6 張｜方法三\n${points[2]}\n\n第 7 張｜收尾 CTA\n不用一次做到最好，先做出自己的第一步。${cta}\n\n【貼文文案】\n關於「${topic}」，我想分享一個觀點：不是每個人都要用同一種方式前進。從理解自己的狀態開始，再找到適合的行動，比盲目模仿更重要。\n\n${cta}\n\n【建議畫面】\n封面大字 → 情境照片 → 3 張重點卡片 → 總結與互動。`;
+else text=`【短影音主題】${topic}\n【建議長度】30–45 秒\n\n【0–3 秒｜吸睛鉤子】\n${hook}\n畫面：人物近景＋大字字幕，直接切入問題。\n\n【4–12 秒｜共鳴情境】\n「很多時候，我們不是不在意這件事，而是不知道第一步怎麼做。尤其看到別人好像都做得很好，更容易覺得自己落後。」\n畫面：日常情境、翻看筆記或生活 B-roll。\n\n【13–28 秒｜3 個具體方法】\n「我會先做三件事。第一，${points[0]}第二，${points[1]}第三，${points[2]}」\n畫面：每個方法一個畫面，搭配數字 1、2、3。\n\n【29–38 秒｜觀點收尾】\n「真正重要的不是一次改變全部，而是找到你願意持續的方式。」\n畫面：回到正面鏡頭，語速放慢。\n\n【結尾 CTA】\n${cta}\n\n【IG 貼文文案】\n關於「${topic}」，你不需要一開始就有標準答案。先從一個做得到的小步驟開始，慢慢找出適合自己的方法。🤎\n\n${cta}\n\n【拍攝清單】\n□ 近景口播開頭\n□ 生活情境 B-roll\n□ 三段方法畫面\n□ 結尾正面鏡頭\n□ 大字字幕＋封面標題`;
+return {title:topic,kind,text};}
+function v13Show(item){v13Current=item.text;const el=document.getElementById('v13Output');el.style.display='block';el.innerHTML=`<span class="v12-eyebrow">READY TO EDIT</span><h2>${v13Escape(item.title)}</h2><p class="v13-tip">已產生完整初稿。請依個人經驗、事實與產品資訊調整。</p><div class="v13-output">${v13Escape(item.text)}</div><div class="v13-row"><button onclick="v13Copy()">複製全部</button><button onclick="v13Save()">♡ 儲存初稿</button><button onclick="v13ToStudio()">進入編輯台</button></div>`;el.scrollIntoView({behavior:'smooth',block:'start'})}
+function v13Generate(kind,day=0){v13Show(v13Script(kind,day))}
+function v13Plan(){v13PlanData=Array.from({length:7},(_,i)=>v13Script(i%3===1?'carousel':'reel',i));const el=document.getElementById('v13Output');el.style.display='block';el.innerHTML='<span class="v12-eyebrow">7-DAY CONTENT PLAN</span><h2>你的 7 天內容安排</h2><p class="v13-tip">點選每天的「查看完整初稿」，即可複製與儲存。</p>'+v13PlanData.map((x,i)=>`<div class="v13-plan"><b>DAY ${i+1} · ${x.kind==='reel'?'短影音':'輪播'}</b><p>${v13Escape(x.title)}</p><button onclick="v13Show(v13PlanData[${i}])">查看完整初稿 →</button></div>`).join('');el.scrollIntoView({behavior:'smooth',block:'start'})}
+async function v13Copy(){try{await navigator.clipboard.writeText(v13Current);alert('已複製完整初稿 ✓')}catch(e){const t=document.createElement('textarea');t.value=v13Current;document.body.append(t);t.select();document.execCommand('copy');t.remove();alert('已複製 ✓')}}
+function v13Save(){if(!v13Current)return;let a=[];try{a=JSON.parse(localStorage.getItem(V13_SAVED)||'[]')}catch(e){}a.unshift({id:Date.now(),text:v13Current,date:new Date().toLocaleDateString('zh-TW')});localStorage.setItem(V13_SAVED,JSON.stringify(a.slice(0,80)));v13RenderSaved();alert('初稿已儲存在這台裝置 🤎')}
+function v13RenderSaved(){let a=[];try{a=JSON.parse(localStorage.getItem(V13_SAVED)||'[]')}catch(e){}document.getElementById('v13Saved').innerHTML=a.length?a.map(x=>`<div class="v13-plan"><b>${v13Escape(x.text.split('\n')[0])}</b><p class="v13-tip">${v13Escape(x.date)}</p><div class="v13-row"><button onclick="v13OpenSaved(${x.id})">開啟</button><button onclick="v13Delete(${x.id})">刪除</button></div></div>`).join(''):'<p class="v13-tip">還沒有收藏。產生初稿後按「儲存初稿」就會出現在這裡。</p>'}
+function v13OpenSaved(id){const a=JSON.parse(localStorage.getItem(V13_SAVED)||'[]');const x=a.find(v=>v.id===id);if(x)v13Show({title:'已儲存初稿',text:x.text})}
+function v13Delete(id){if(!confirm('確定刪除此初稿？'))return;let a=JSON.parse(localStorage.getItem(V13_SAVED)||'[]');localStorage.setItem(V13_SAVED,JSON.stringify(a.filter(v=>v.id!==id)));v13RenderSaved()}
+function v13ToStudio(){if(!v13Current)return;go('studio');const lines=v13Current.split('\n');document.getElementById('v12Title').value=lines[0].replace(/【.*?】/g,'').trim();document.getElementById('v12Body').value=v13Current;document.getElementById('v12Hook').value=lines.find(x=>x.includes('你有沒有')||x.includes('我後來')||x.includes('如果你也'))||'';document.getElementById('v12Cta').value=v13Current.split('【結尾 CTA】')[1]?.split('【')[0]?.trim()||''}
+document.addEventListener('DOMContentLoaded',v13Load);
 </script>
 </body>
 </html>
