@@ -393,8 +393,13 @@
 .member-msg{min-height:20px;font-size:12px;color:#a15f50;margin-top:10px;line-height:1.5}
 .member-logout{position:fixed;right:14px;top:14px;z-index:9000;border:1px solid #e2d4ce;background:rgba(255,250,247,.92);color:#8d7167;border-radius:999px;padding:8px 12px;font-size:11px;display:none}
 .member-logout.show{display:block}
+.line-member-link{display:block;text-decoration:none;border:1px solid #cbb6aa;color:#74564b;background:#f8eee7;border-radius:15px;padding:13px 12px;font-size:14px;font-weight:800;margin-top:12px}
+.line-member-link small{display:block;font-size:11px;font-weight:400;margin-top:5px;line-height:1.6;color:#92776a}
+.line-help-fab{position:fixed;bottom:84px;right:14px;z-index:9200;border-radius:999px;background:#8e685a;color:white;text-decoration:none;box-shadow:0 8px 24px #74564b44;padding:11px 16px;font-size:13px;font-weight:800;display:none}
+.line-help-fab.show{display:block}
 </style>
 
+<meta name="ling-version" content="11-line-member">
 </head>
 <body>
 
@@ -409,9 +414,11 @@
     <input id="memberCode" type="text" autocomplete="off" placeholder="LING-XXXX-XXXX">
     <button class="member-unlock" onclick="memberUnlock()">進入 LING →</button>
     <div id="memberMsg" class="member-msg"></div>
+    <a class="line-member-link" href="https://lin.ee/YsBIviw5" target="_blank" rel="noopener noreferrer">💬 前往 LINE 官方帳號領取序號<small>完成付款後，傳送「領取序號」給伊玲，由官方帳號人工核對並發送。</small></a>
   </div>
 </div>
 <button id="memberLogout" class="member-logout" onclick="memberLogout()">登出</button>
+<a id="lineHelpFab" class="line-help-fab" href="https://lin.ee/YsBIviw5" target="_blank" rel="noopener noreferrer" aria-label="聯繫 LING LINE 官方客服">LINE 官方客服 ↗</a>
 
 
 <div id="welcome" class="welcome">
@@ -1231,7 +1238,7 @@ const MEMBER_DEVICE_KEY = "lingMemberDeviceV10";
 function memberConfigReady(){
   return window.LING_CONFIG &&
     /^https:\/\/.+\.supabase\.co$/.test(window.LING_CONFIG.supabaseUrl || "") &&
-    (window.LING_CONFIG.supabaseAnonKey || "").length > 30;
+    /^sb_publishable_/.test(window.LING_CONFIG.supabaseAnonKey || "");
 }
 
 function memberDeviceId(){
@@ -1249,18 +1256,22 @@ async function memberRpc(fn, payload){
     method:"POST",
     headers:{
       "Content-Type":"application/json",
-      "apikey":c.supabaseAnonKey,
-      "Authorization":"Bearer "+c.supabaseAnonKey
+      "apikey":c.supabaseAnonKey
     },
     body:JSON.stringify(payload)
   });
-  if(!res.ok) throw new Error("驗證服務暫時無法連線");
+  if(!res.ok){
+    let detail="";
+    try{ detail=await res.text(); }catch(_){}
+    throw new Error("驗證服務連線失敗（"+res.status+"）"+(detail ? "："+detail.slice(0,100) : ""));
+  }
   return await res.json();
 }
 
 function memberSetState(ok){
   document.getElementById("memberGate")?.classList.toggle("hidden",ok);
   document.getElementById("memberLogout")?.classList.toggle("show",ok);
+  document.getElementById("lineHelpFab")?.classList.toggle("show",ok);
 }
 
 async function memberUnlock(){
