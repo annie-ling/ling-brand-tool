@@ -408,6 +408,9 @@
 .v13-head{border-radius:26px;background:linear-gradient(125deg,#f0e1d8,#fff9f5);padding:28px 22px;margin:6px 0 16px}.v13-head h1{font-family:"Noto Serif TC",serif;font-size:32px;line-height:1.3;color:#523b32}.v13-head p,.v13-tip{color:#806e64;font-size:13px;line-height:1.75}.v13-box{background:#fffdfa;border:1px solid #e8d9d0;border-radius:22px;padding:21px;margin:16px 0;box-shadow:0 7px 20px #5c3e2b0c}.v13-box h2{font-size:21px;margin:10px 0}.v13-box label{font-size:13px;margin:15px 0 6px}.v13-box select{width:100%}.v13-btn{display:block;text-align:center;text-decoration:none;background:#8e6c5e;color:#fff;border:0;border-radius:13px;padding:14px;width:100%;font-weight:800;margin-top:13px}.v13-btn.alt{background:#eaddd5;color:#624c41}.v13-line{background:#638a6b}.v13-actions{display:grid;gap:11px}.v13-actions button{background:#f8f0ea;border:1px solid #e6d4c9;border-radius:15px;padding:17px;text-align:left;color:#5b4338;font-weight:800}.v13-actions span{display:block;font-size:12px;font-weight:400;margin-top:5px;color:#897166}.v13-output{white-space:pre-wrap;line-height:1.85;font-size:14px;color:#4b3d37;background:#fbf5f0;border-radius:15px;padding:18px;margin:12px 0}.v13-row{display:flex;gap:8px;flex-wrap:wrap}.v13-row button{flex:1;border:1px solid #ddc9bd;background:#f7ece5;color:#694f41;padding:11px;border-radius:11px;font-weight:700}.v13-plan{border-top:1px solid #ecddd5;padding:13px 0}.v13-plan button{border:0;background:#f2e5dc;color:#6d5143;border-radius:9px;padding:8px;margin-top:8px}
 </style>
 <meta name="ling-version" content="13-content-assistant">
+<style>
+.v15-hero{background:linear-gradient(145deg,#f6e8dd,#fffaf6);padding:29px 22px;border:1px solid #e6d3c8;border-radius:26px;margin:14px 0 16px}.v15-tag{font-size:10px;font-weight:900;letter-spacing:.2em;color:#a07566}.v15-hero h1{font:700 clamp(27px,6vw,39px)/1.45 'Noto Serif TC',serif;color:#4d3b34;margin:12px 0}.v15-hero p,.v15-card p{color:#79645b;line-height:1.85;font-size:14px}.v15-progress{margin-top:14px;display:inline-block;background:#fff;border-radius:99px;padding:9px 14px;color:#8b6557;font-weight:800;font-size:12px}.v15-note{padding:14px;background:#fff7ee;border-radius:16px;font-size:13px;line-height:1.7;color:#77594e;margin-bottom:15px}.v15-steps{display:grid;gap:13px}.v15-card,.v15-step{background:#fffdfb;border:1px solid #e8d9d0;border-radius:22px;padding:20px;margin-bottom:14px;box-shadow:0 8px 22px #7250430a}.v15-step h2,.v15-card h2{font-size:19px;color:#49372f;margin:9px 0}.v15-step p{font-size:13px;color:#846e63;line-height:1.8}.v15-step .v15-number{font-size:11px;letter-spacing:.12em;font-weight:900;color:#a87864}.v15-btn{border:0;border-radius:14px;background:#906c5e;color:white;font-weight:900;padding:13px 15px;cursor:pointer;font-size:14px}.v15-secondary{border:1px solid #cdb5a7;border-radius:14px;background:#fffaf7;color:#785748;font-weight:800;padding:12px 14px;cursor:pointer;font-size:13px}.v15-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.v15-panel{margin-top:15px;background:#faf3ee;border-radius:15px;padding:15px}.v15-panel label{font-size:13px;color:#63483c;font-weight:800;display:block;margin:10px 0 6px}.v15-panel textarea{width:100%;box-sizing:border-box;border:1px solid #dbc6b9;background:white;border-radius:12px;padding:12px;min-height:120px;font-size:14px;line-height:1.65;color:#49372f}.v15-panel .v15-prompt{min-height:250px}.v15-saved{white-space:pre-wrap;overflow-wrap:anywhere;max-height:180px;overflow:auto;background:#faf3ee;padding:12px;border-radius:12px;font-size:13px;line-height:1.6;margin:10px 0}.v15-footer{text-align:center;color:#a28a7c;font-size:12px;line-height:1.8;padding:20px 8px 28px}.v15-state{color:#66836c;font-size:12px;font-weight:800}
+</style>
 </head>
 <body>
 
@@ -446,7 +449,15 @@
 
   
 <section id="home" class="page active">
-<div class="v13-head"><span class="v12-eyebrow">LING · CONTENT ASSISTANT</span><h1>今天的內容，<br>讓 LING 幫你完成。🤎</h1><p>不用從空白開始。選好方向，直接得到可編輯、可複製的完整初稿。</p></div>
+<div class="v15-hero"><span class="v15-tag">LING · GUIDED GROWTH</span><h1>不用先想好答案。<br>我們從你開始。🤎</h1><p>選擇你目前最需要的方向，一鍵複製指令，讓你常用的 AI 一題一題陪你探索。完成後將結果存回 LING，再接力到下一階段。</p><div class="v15-progress" id="v15Progress">已完成 0 / 5 階段</div></div>
+<div class="v15-note">✨ <b>第一次使用？</b>從「01 探索自己」開始。你不必先知道自己有什麼專長。</div>
+<div id="v15Steps" class="v15-steps"></div>
+<div class="v15-card"><span class="v15-tag">YOUR GROWTH JOURNAL</span><h2>我的探索成果</h2><p>AI 回覆後，把重要結果貼回這裡保存。下一階段的指令會自動帶入已保存的成果。</p><div id="v15Saved"></div><button class="v15-secondary" onclick="v15Export()">匯出我的成長紀錄（文字檔）</button></div>
+<div class="v15-card"><h2>原本的內容工具</h2><p>已經有方向、想直接做 IG 內容？原本的腳本、輪播、BIO 與工作台仍保留。</p><button class="v15-secondary" onclick="go('legacyHome')">開啟內容指令工作室 →</button></div>
+<div class="v15-footer">LING · 先找到自己，再讓對的人找到你。<br>分析結果僅供探索與實驗，不保證收入；請避免把敏感個資貼進外部 AI。</div>
+</section>
+<section id="legacyHome" class="page">
+<div class="v13-head"><span class="v12-eyebrow">LING · PROMPT ASSISTANT</span><h1>今天的內容，<br>讓 LING 幫你完成。🤎</h1><p>不用從空白開始。選好方向，直接得到可編輯、可複製的完整初稿。</p></div>
 <div class="v13-box"><div class="v12-eyebrow">01 · 你的品牌設定</div><h2>先讓我認識你的內容</h2><p class="v13-tip">只要設定一次，下次打開會自動帶入。</p>
 <label>內容領域</label><select id="v13Niche"><option>情侶感情</option><option>美妝保養</option><option>個人成長</option><option>創業副業</option><option>理財入門</option><option>生活分享</option><option>健康知識</option></select>
 <label>主要受眾</label><select id="v13Audience"><option>25–35 歲女性</option><option>18–25 歲女性</option><option>上班族</option><option>自媒體新手</option><option>情侶族群</option><option>想改善生活的人</option></select>
@@ -454,6 +465,7 @@
 <label>這次想達成</label><select id="v13Goal"><option>增加追蹤</option><option>提高收藏</option><option>增加留言</option><option>建立信任</option></select>
 <button class="v13-btn alt" onclick="v13SavePrefs()">儲存我的品牌設定 ✓</button></div>
 <div class="v13-box"><div class="v12-eyebrow">02 · 一鍵完成</div><h2>今天想產生什麼？</h2><div class="v13-actions"><button onclick="v13Generate('reel')">🎬 完整短影音腳本<span>鉤子＋逐段口播＋畫面＋CTA</span></button><button onclick="v13Generate('carousel')">📚 完整輪播貼文<span>封面＋6 張內頁＋貼文文案</span></button><button onclick="v13Plan()">📅 7 天內容計畫<span>每天都能展開完整初稿</span></button></div><p class="v13-tip">本版採品牌情境模板自動組合，不是即時 AI；請依真實經歷調整內容後再發布。</p></div>
+<div class="v13-box"><div class="v12-eyebrow">03 · AI 指令工作室 · 不需串接 API</div><h2>不會寫指令？LING 幫你準備好 🤎</h2><p class="v13-tip">選好上面的品牌設定，再選想做的內容，按「產生可複製指令」。把指令貼到你慣用的 AI 聊天工具，就能請 AI 幫你產出初稿。每天可重新使用，也能改寫內容。</p><label>想請 AI 幫你做什麼？</label><select id="lingPromptType"><option value="reel">短影音完整腳本＋拍攝分鏡</option><option value="carousel">7 張 IG 輪播＋貼文文案</option><option value="week">7 天內容企劃＋每日腳本</option><option value="bio">IG BIO 優化（3 版）</option><option value="rewrite">改寫舊貼文：提高吸引力</option></select><label>想談的主題（可留空，由 LING 推薦）</label><input id="lingPromptTopic" placeholder="例如：交往五年才懂的安全感"><label>我的真實經歷或補充（選填，越具體越像你）</label><textarea id="lingPromptStory" rows="3" placeholder="例如：男友不一定秒回，但答應的事情都會做到。"></textarea><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><button class="v13-btn" onclick="lingMakePrompt()">✨ 產生可複製 AI 指令</button><button class="v13-btn alt" onclick="lingNextTopic()">🔄 換個推薦主題</button></div><div id="lingPromptBox" style="display:none;margin-top:18px"><label>你的專屬 AI 指令</label><textarea id="lingPromptText" rows="17" style="width:100%;line-height:1.65"></textarea><button class="v13-btn" onclick="lingCopyPrompt()" style="margin-top:10px">📋 複製完整指令</button><p class="v13-tip">複製後，打開你平常使用的 AI 聊天工具並貼上。LING 不會替你自動送出內容，也不會產生額外 API 費用。請確認 AI 產出內容符合事實，再公開發布。</p></div></div>
 <div id="v13Output" class="v13-box" style="display:none" aria-live="polite"></div>
 <div class="v13-box"><h2>我的已儲存內容</h2><div id="v13Saved"></div></div>
 </section>
@@ -796,7 +808,7 @@
   </section>
 
   <nav class="bottom-nav v12-nav">
-    <button data-page="home" class="active" onclick="go('home')"><span class="icon">⌂</span>工作室</button>
+    <button data-page="home" class="active" onclick="go('home')"><span class="icon">⌂</span>引導</button>
     <button data-page="studio" onclick="go('studio')"><span class="icon">✎</span>編輯台</button>
     <button data-page="favorites" onclick="go('favorites')"><span class="icon">♡</span>收藏</button>
     <button data-page="growth" onclick="go('growth')"><span class="icon">◫</span>成長</button>
@@ -1393,13 +1405,48 @@ function v13Delete(id){if(!confirm('確定刪除此初稿？'))return;let a=JSON
 function v13ToStudio(){if(!v13Current)return;go('studio');const lines=v13Current.split('\n');document.getElementById('v12Title').value=lines[0].replace(/【.*?】/g,'').trim();document.getElementById('v12Body').value=v13Current;document.getElementById('v12Hook').value=lines.find(x=>x.includes('你有沒有')||x.includes('我後來')||x.includes('如果你也'))||'';document.getElementById('v12Cta').value=v13Current.split('【結尾 CTA】')[1]?.split('【')[0]?.trim()||''}
 document.addEventListener('DOMContentLoaded',v13Load);
 </script>
+<script>
+const LING_PROMPT_INDEX='lingPromptIndexV14';
+function lingNextTopic(){const n=(Number(localStorage.getItem(LING_PROMPT_INDEX)||'0')+1);localStorage.setItem(LING_PROMPT_INDEX,String(n));document.getElementById('lingPromptTopic').value='';lingMakePrompt()}
+function lingMakePrompt(){
+ const p=v13SavePrefs(true),kind=document.getElementById('lingPromptType').value;
+ const topics=V13_TOPICS[p.niche]||V13_TOPICS['個人成長'];
+ const n=Number(localStorage.getItem(LING_PROMPT_INDEX)||'0');
+ const topic=document.getElementById('lingPromptTopic').value.trim()||topics[(Math.floor(Date.now()/86400000)+n)%topics.length];
+ const story=document.getElementById('lingPromptStory').value.trim();
+ const request={
+ reel:'請產出一支 35–50 秒的 IG Reels 短影音：提供 5 個前三秒鉤子（其中 2 個有八卦感）、逐秒口播、鏡頭畫面與 B-roll、字幕重點、封面標題、貼文文案、3 個不同 CTA。',
+ carousel:'請產出一篇 7 張 IG 輪播：第 1 張高吸引力封面、第 2 張共鳴痛點、第 3–6 張具體內容、第 7 張 CTA；每張都給可直接貼上的短文，另附貼文說明與 3 個標題備選。',
+ week:'請規劃 7 天不重複的 IG 內容：每一天列出主題、形式、吸睛鉤子、完整可拍腳本或逐張輪播文字、畫面建議、CTA。內容兼顧吸粉、收藏、互動與信任。',
+ bio:'請幫我寫 3 組 IG BIO，每組 4 行：身分與差異、追蹤能得到的價值、個人特質或信任點、清楚 CTA；再分析各版本的優缺點。',
+ rewrite:'請根據下方主題與經歷，寫一篇能引發共鳴的 IG 貼文；提供 3 個不同吸睛開頭、正文、結尾 CTA，並附短影音改編版本。'
+ }[kind];
+ const prompt=`你是一位擅長台灣繁體中文、IG 短影音與輪播的內容策略師。請直接替我完成可發布的初稿，不要只給題目或叫我自己想。\n\n【我的品牌設定】\n領域：${p.niche}\n受眾：${p.audience}\n語氣：${p.tone}\n這次目標：${p.goal}\n主題：${topic}\n我的真實經歷：${story||'尚未提供。不要替我虛構個人故事；需要個人案例時請用〔請補充真實經歷〕標示。'}\n\n【請完成】\n${request}\n\n【品質要求】\n1. 第一段要能抓住注意力，但不要誇大或造假。\n2. 用自然的台灣繁體中文，避免空泛勵志句與罐頭文。\n3. 具體到能直接照著拍、排版、發布；不要叫我自己補完主要內容。\n4. 不要虛構我的數據、成績、感情或工作經歷。\n5. 最後附上 3 個可延伸的下一篇主題，避免和本篇重複。\n6. 如果資訊不足，先完成合理的通用版本，並標註最多 2 個需要我補充的細節。`;
+ document.getElementById('lingPromptText').value=prompt;
+ document.getElementById('lingPromptBox').style.display='block';
+ document.getElementById('lingPromptBox').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+async function lingCopyPrompt(){const el=document.getElementById('lingPromptText');try{await navigator.clipboard.writeText(el.value);alert('已複製！貼到你使用的 AI 聊天工具即可 🤎')}catch(e){el.focus();el.select();document.execCommand('copy');alert('已選取指令，請長按複製 🤎')}}
+</script>
+<script>
+const V15_KEY='lingGuidedGrowthV15';
+const V15_STEPS=[
+ ['🌱','探索自己','不知道自己的優勢、能力和興趣？先用一問一答找出線索。','請逐步探索我的經歷、做過的事、別人常找我幫忙的問題、我喜歡與不喜歡的工作方式。最後整理：3 個有證據的優勢、我可能忽略的能力、適合進一步驗證的 3 個方向，以及我仍需補充的資訊。'],
+ ['🤎','找到定位','把優勢整理成可以被理解的個人定位，不再什麼都想做。','根據已知探索成果，分析 3 個可能的個人品牌定位；每個定位說明：服務對象、具體困擾、我能提供的價值、差異化依據、需要驗證的假設。請協助我比較，最後產出一句話定位與 IG BIO 3 個版本。'],
+ ['✨','建立內容','不用自己從零想主題，讓 AI 引導你建立能持續分享的內容方向。','根據我的定位與真實經歷，建立 3 大內容支柱、各 10 個具體題目，挑選最值得先做的 7 篇。每篇請給短影音或輪播形式、前三秒鉤子、可直接修改的完整初稿、畫面建議與 CTA。不可虛構我的故事或成績。'],
+ ['💰','發掘變現機會','找出別人可能願意付費解決的問題，先驗證再投入。','根據我的優勢、定位與受眾困擾，提出 3 個可低成本測試的服務或數位產品。對每個方案提供：誰會買、購買動機、交付內容、合理的測試定價方法、所需成本、風險、如何訪談 5 位潛在客戶。請明確標示尚未驗證的假設，不保證收入。'],
+ ['🚀','7 天開始行動','把想法變成每天能完成的小步驟，避免一直停在規劃。','根據前面確認的方向，規劃 7 天可執行的最小行動，每天只安排 1 個主要任務，寫清楚完成標準、所需時間、可直接複製使用的文字範例與卡關替代方案。第 7 天提供如何檢查成果並調整下一週方向。']
+];
+function v15Get(){try{return JSON.parse(localStorage.getItem(V15_KEY)||'{}')}catch(e){return {}}}
+function v15Set(v){try{localStorage.setItem(V15_KEY,JSON.stringify(v));return true}catch(e){alert('儲存失敗，可能是瀏覽器儲存空間不足。請先匯出資料。');return false}}
+function v15Prompt(i){const prev=v15Get();const context=V15_STEPS.slice(0,i).map((x,j)=>prev[j]?.result?'【第'+(j+1)+'階段：'+x[1]+'】\n'+prev[j].result:'').filter(Boolean).join('\n\n');return `你是耐心、務實的個人優勢探索與品牌策略引導教練。請使用台灣繁體中文。\n\n【這次的階段】${V15_STEPS[i][1]}\n【目標】${V15_STEPS[i][3]}\n\n【先前階段成果】\n${context||'目前沒有已儲存的成果，請從零開始了解我。'}\n\n【互動規則】\n1. 請先確認你理解我的目標，然後每次只問我一個具體、好回答的問題，等我回答才問下一題。\n2. 不要一開始就丟給我一長串問卷；如果我回答「不知道」，請給 2–3 個生活化例子協助我回想。\n3. 針對我的答案追問真實例子，不要替我虛構經歷、收入或成就。\n4. 資訊足夠後，請依本階段目標整理完整、可執行的成果，標明哪些是事實、哪些只是推測。\n5. 最後提供一段「【階段成果摘要】」，方便我複製回 LING 保存，再繼續下一階段。\n6. 如果你無法讀到前面階段，請只使用上方提供的成果，不要假裝記得。\n\n現在請先問我第一個問題。`}
+function v15Render(){const data=v15Get();document.getElementById('v15Progress').textContent='已完成 '+V15_STEPS.filter((_,i)=>data[i]?.result?.trim()).length+' / 5 階段';const box=document.getElementById('v15Steps');box.innerHTML='';V15_STEPS.forEach((x,i)=>{const card=document.createElement('article');card.className='v15-step';const head=document.createElement('div');head.className='v15-number';head.textContent='STAGE '+String(i+1).padStart(2,'0')+' · '+(data[i]?.result?'✓ 已儲存成果':'待探索');const title=document.createElement('h2');title.textContent=x[0]+' '+x[1];const desc=document.createElement('p');desc.textContent=x[2];const acts=document.createElement('div');acts.className='v15-actions';const start=document.createElement('button');start.className='v15-btn';start.textContent='取得 AI 引導指令 →';start.onclick=()=>v15Open(i);acts.append(start);card.append(head,title,desc,acts);const panel=document.createElement('div');panel.className='v15-panel';panel.id='v15Panel'+i;panel.hidden=true;card.append(panel);box.append(card)});const saved=document.getElementById('v15Saved');saved.innerHTML='';V15_STEPS.forEach((x,i)=>{if(!data[i]?.result)return;const label=document.createElement('b');label.textContent=x[0]+' '+x[1];const body=document.createElement('div');body.className='v15-saved';body.textContent=data[i].result;saved.append(label,body)});if(!saved.children.length){saved.textContent='還沒有儲存的成果。完成第一階段後，就會出現在這裡。'}}
+function v15Open(i){const panel=document.getElementById('v15Panel'+i);panel.hidden=false;panel.innerHTML='';const intro=document.createElement('p');intro.textContent='第一步：複製指令貼到你的 AI 工具；第二步：完成對話，把「階段成果摘要」貼回下方保存。';const label=document.createElement('label');label.textContent='可複製的 AI 引導指令';const ta=document.createElement('textarea');ta.className='v15-prompt';ta.readOnly=true;ta.value=v15Prompt(i);const buttons=document.createElement('div');buttons.className='v15-actions';const copy=document.createElement('button');copy.className='v15-btn';copy.textContent='複製完整指令';copy.onclick=()=>v15Copy(ta);const open=document.createElement('button');open.className='v15-secondary';open.textContent='開啟 ChatGPT ↗';open.onclick=()=>window.open('https://chatgpt.com/','_blank','noopener');buttons.append(copy,open);const label2=document.createElement('label');label2.textContent='貼上 AI 整理的階段成果摘要';const result=document.createElement('textarea');result.placeholder='將 AI 最後整理的【階段成果摘要】貼在這裡…';result.value=v15Get()[i]?.result||'';const save=document.createElement('button');save.className='v15-btn';save.textContent='儲存這一階段成果 ✓';save.onclick=()=>{if(!result.value.trim()){alert('請先貼上成果摘要');return}const d=v15Get();d[i]={result:result.value.trim(),updated:new Date().toISOString()};if(v15Set(d)){v15Render();document.getElementById('v15Panel'+i).hidden=false;v15Open(i);alert('已儲存！下一階段指令會帶入這份成果 🤎')}};const stuck=document.createElement('button');stuck.className='v15-secondary';stuck.textContent='卡關了？複製追問指令';stuck.onclick=()=>v15CopyText('我目前卡住了，請不要要求我自己想答案。根據我們剛才的對話，每次只給我一個生活化的小問題；如果我不知道怎麼回答，請給我 3 個不同例子供我選擇，並且不要替我虛構經歷。');const row=document.createElement('div');row.className='v15-actions';row.append(save,stuck);panel.append(intro,label,ta,buttons,label2,result,row);panel.scrollIntoView({behavior:'smooth',block:'nearest'})}
+async function v15CopyText(t){try{await navigator.clipboard.writeText(t);alert('已複製 🤎')}catch(e){const x=document.createElement('textarea');x.value=t;document.body.append(x);x.select();document.execCommand('copy');x.remove();alert('已複製；若無法貼上，請長按文字手動複製。')}}
+function v15Copy(ta){v15CopyText(ta.value)}
+function v15Export(){const d=v15Get();const t='LING｜我的成長紀錄\n\n'+V15_STEPS.map((x,i)=>x[1]+'\n'+(d[i]?.result||'尚未完成')).join('\n\n──────\n\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/plain;charset=utf-8'}));a.download='LING-我的成長紀錄.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
+document.addEventListener('DOMContentLoaded',()=>{v15Render();const h=document.getElementById('home');if(h&&!document.querySelector('.member-gate:not(.hidden)'))go('home')});
+</script>
 </body>
 </html>
 
-<script>
-document.addEventListener("DOMContentLoaded", function(){
-  document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
-  const p=document.getElementById("home");
-  if(p) p.classList.add("active");
-});
-</script>
