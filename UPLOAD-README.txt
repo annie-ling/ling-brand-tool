@@ -1,8 +1,6 @@
-LING V12｜每日品牌工作室
+LING V15.2｜成長地圖與卡關救援
 
-解壓縮後，把全部檔案上傳至 GitHub annie-ling/ling-brand-tool 專案根目錄，覆蓋舊版並 Commit。
-
-保留原 Supabase 序號驗證及 LINE 官方帳號：https://lin.ee/YsBIviw5
-
-新增：每日任務、依定位組合的每日靈感、內容工作台、收藏、成長紀錄、品牌工作室首頁。
-資料目前儲存在使用者瀏覽器 localStorage，不會同步雲端。請勿清除網站資料；正式商用建議後續做雲端備份。
+請將 ZIP 解壓縮後所有網站檔案覆蓋上傳至 GitHub ling-brand-tool 根目錄，Commit changes。
+新增：成果驗收、專屬成長地圖、卡關救援。保留 V15.1 五題引導、Supabase 會員驗證及 LINE 官方客服。
+重要：成果仍保存在目前瀏覽器的 localStorage；更新同一網址一般會保留，清除網站資料或換裝置可能遺失。請定期匯出文字備份。
+無需 AI API。

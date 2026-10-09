@@ -453,6 +453,9 @@
 <div class="v15-note">✨ <b>第一次使用？</b>從「01 探索自己」開始。你不必先知道自己有什麼專長。</div>
 <div id="v15Steps" class="v15-steps"></div>
 <div class="v15-card"><span class="v15-tag">YOUR GROWTH JOURNAL</span><h2>我的探索成果</h2><p>AI 回覆後，把重要結果貼回這裡保存。下一階段的指令會自動帶入已保存的成果。</p><div id="v15Saved"></div><button class="v15-secondary" onclick="v15Export()">匯出我的成長紀錄（文字檔）</button></div>
+<div class="v15-card"><span class="v15-tag">RESULT CHECK</span><h2>🔎 AI 成果驗收</h2><p>覺得分析太籠統？選擇已完成的階段，複製驗收指令，請 AI 區分事實、推測與今天最值得做的事。</p><label for="v152CheckStage">選擇要驗收的階段</label><select id="v152CheckStage"></select><div class="v15-actions"><button class="v15-btn" onclick="v152CopyCheck()">複製成果驗收指令 ↗</button></div></div>
+<div class="v15-card"><span class="v15-tag">MY GROWTH MAP</span><h2>🗺️ 我的專屬成長地圖</h2><p>五個階段的成果會整理在這裡；完成一階段就更新一次。可複製整合摘要或匯出文字檔。</p><div id="v152Map"></div><div class="v15-actions"><button class="v15-btn" onclick="v152CopyMap()">複製成長地圖</button><button class="v15-secondary" onclick="v152ExportMap()">匯出成長地圖</button></div></div>
+<div class="v15-card"><span class="v15-tag">WHEN YOU FEEL STUCK</span><h2>🧭 卡關救援中心</h2><p>完成探索後遇到新問題？選擇最接近的困擾，LING 會結合你已儲存的成果，產生可直接貼到 AI 的引導指令。</p><label for="v152Issue">我現在最困擾的是…</label><select id="v152Issue"><option value="direction">不知道下一步要做什麼</option><option value="position">定位太廣、不知道如何聚焦</option><option value="content">沒有內容靈感、寫不出來</option><option value="sales">有方向但不知道如何驗證付費需求</option><option value="action">計畫太多、一直拖延</option></select><div class="v15-actions"><button class="v15-btn" onclick="v152CopyRescue()">複製卡關救援指令 ↗</button></div><p style="font-size:12px;opacity:.75">AI 最多詢問 5 題；不虛構經歷、不保證收入。</p></div>
 <div class="v15-card"><h2>原本的內容工具</h2><p>已經有方向、想直接做 IG 內容？原本的腳本、輪播、BIO 與工作台仍保留。</p><button class="v15-secondary" onclick="go('legacyHome')">開啟內容指令工作室 →</button></div>
 <div class="v15-footer">LING · 先找到自己，再讓對的人找到你。<br>分析結果僅供探索與實驗，不保證收入；請避免把敏感個資貼進外部 AI。</div>
 </section>
@@ -1445,6 +1448,18 @@ function v15Open(i){const panel=document.getElementById('v15Panel'+i);panel.hidd
 async function v15CopyText(t){try{await navigator.clipboard.writeText(t);alert('已複製 🤎')}catch(e){const x=document.createElement('textarea');x.value=t;document.body.append(x);x.select();document.execCommand('copy');x.remove();alert('已複製；若無法貼上，請長按文字手動複製。')}}
 function v15Copy(ta){v15CopyText(ta.value)}
 function v15Export(){const d=v15Get();const t='LING｜我的成長紀錄\n\n'+V15_STEPS.map((x,i)=>x[1]+'\n'+(d[i]?.result||'尚未完成')).join('\n\n──────\n\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/plain;charset=utf-8'}));a.download='LING-我的成長紀錄.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
+
+/* LING V15.2: result check, growth map, stuck rescue. Local-only storage. */
+function v152Context(){const d=v15Get();return V15_STEPS.map((x,i)=>d[i]?.result?.trim()?`【${x[1]}】\n${d[i].result}`:'').filter(Boolean).join('\n\n')}
+function v152MapText(){const d=v15Get();return 'LING｜我的專屬成長地圖\n更新日期：'+new Date().toLocaleDateString('zh-TW')+'\n\n'+V15_STEPS.map((x,i)=>`第 ${i+1} 階段｜${x[1]}\n${d[i]?.result?.trim()||'尚未完成；可從首頁開始這個階段。'}`).join('\n\n──────────\n\n')+'\n\n下一步：從已完成階段挑一個可驗證的小行動，今天先完成。\n提醒：AI 的推測仍需實際驗證。'}
+function v152Render(){const d=v15Get(),sel=document.getElementById('v152CheckStage'),map=document.getElementById('v152Map');if(!sel||!map)return;const old=sel.value;sel.replaceChildren();V15_STEPS.forEach((x,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${i+1}. ${x[1]}${d[i]?.result?.trim()?' ✓':'（尚未儲存）'}`;sel.append(o)});if(old&&Number(old)<5)sel.value=old;map.replaceChildren();V15_STEPS.forEach((x,i)=>{const box=document.createElement('div');box.className='v15-saved';box.style.marginBottom='12px';const strong=document.createElement('strong');strong.textContent=`${x[0]} ${x[1]} · ${d[i]?.result?.trim()?'已完成':'待完成'}`;const body=document.createElement('p');body.style.whiteSpace='pre-wrap';body.style.maxHeight='160px';body.style.overflow='auto';body.textContent=d[i]?.result?.trim()||'完成這一階段並儲存摘要後，成果會自動顯示。';box.append(strong,body);map.append(box)})}
+function v152CopyCheck(){const i=Number(document.getElementById('v152CheckStage').value),d=v15Get();if(!d[i]?.result?.trim()){alert('請先完成並儲存這個階段的成果 🤎');return}v15CopyText(`你是嚴謹且務實的個人成長顧問，請用台灣繁體中文驗收我的【${V15_STEPS[i][1]}】成果。\n\n【我的原始成果】\n${d[i].result}\n\n請直接依據上方內容：\n1. 列出有真實經歷支持的結論與證據。\n2. 指出哪些是 AI 推測、哪些資訊不足，不能當成事實。\n3. 選出最值得先驗證的一個方向並說明原因。\n4. 提供一個 30 分鐘內可做的低成本驗證行動、完成標準及可複製文字範例。\n5. 最後用三句話告訴我今天要做什麼。\n不要過度稱讚或虛構資料；如果資料不足，最多只問 5 題（包含追問），一次一題，之後直接整理。`)}
+function v152CopyMap(){v15CopyText(v152MapText())}
+function v152ExportMap(){const a=document.createElement('a'),url=URL.createObjectURL(new Blob([v152MapText()],{type:'text/plain;charset=utf-8'}));a.href=url;a.download='LING-我的專屬成長地圖.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)}
+function v152CopyRescue(){const issue=document.getElementById('v152Issue').value,problems={direction:'我已經有一些分析結果，但不知道現在最該先做什麼。',position:'我的定位太廣，無法讓受眾一眼理解我的價值。',content:'我想持續產出內容，但想不到具體題目與能直接使用的初稿。',sales:'我有服務或產品方向，但不知道誰願意付費、如何低成本驗證。',action:'我規劃很多卻遲遲沒開始，需要能立刻完成的最小行動。'};v15CopyText(`你是一位耐心、務實的個人品牌與行動教練，請用台灣繁體中文幫我解決目前的卡關。\n\n【目前困擾】\n${problems[issue]}\n\n【我先前的探索成果】\n${v152Context()||'目前沒有儲存成果，請不要假設我的經歷。'}\n\n【互動規則】\n每次最多問一題，包含追問總共不超過五題；優先利用我已有的資料，不要重複詢問已知資訊。若我回答不知道，請給我 2–3 個生活化選項。問完後直接給：最可能的卡點、可執行的三步解法、今天唯一要完成的 20–30 分鐘任務、完成標準與可以直接複製使用的文字範例。請區分已知事實與推測，不虛構故事、不保證成果。\n\n現在先根據已有資料判斷是否需要提問；若已足夠，請直接提出方案。`)}
+const v152OldRender=v15Render;
+v15Render=function(){v152OldRender();v152Render()};
+
 document.addEventListener('DOMContentLoaded',()=>{v15Render();const h=document.getElementById('home');if(h&&!document.querySelector('.member-gate:not(.hidden)'))go('home')});
 </script>
 </body>
