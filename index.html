@@ -6,14 +6,14 @@
   <meta name="theme-color" content="#F4E9E3" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="apple-mobile-web-app-title" content="LING 品牌" />
+  <meta name="apple-mobile-web-app-title" content="LING 靈感製造機" />
   <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="application-name" content="LING 品牌" />
+  <meta name="application-name" content="LING 靈感製造機" />
   <meta name="description" content="把你的故事、個性與經歷，整理成一個讓人記得住的個人品牌。" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="apple-touch-icon" href="icon-180.png" />
 
-  <title>LING｜找到你的品牌｜個人品牌定位工具</title>
+  <title>LING 靈感製造機｜AI 引導式成長工具</title>
   <style>
     :root{
       --bg:#f7f2ee;
@@ -370,6 +370,29 @@
 .code-area button{width:100%;border:0;border-radius:14px;background:#8d6658;color:#fff;font-weight:900;padding:14px;margin-top:10px}
 .code-area small{display:block;text-align:center;color:#a16b5d;margin-top:9px;min-height:16px}
 
+
+    /* V15.5: compact mobile-first home spacing and a clear, subtle brand tagline. */
+    #home.page{padding-top:12px;padding-bottom:20px}
+    #home .v15-hero{padding:23px 20px 20px;margin:3px 0 11px}
+    #home .v15-hero h1{font-size:clamp(28px,6.4vw,37px);line-height:1.26;margin:11px 0 8px}
+    #home .ling-brand-tagline{font-size:15px;font-weight:800;color:#6d5145;line-height:1.65;margin:0 0 7px}
+    #home .ling-brand-explainer{font-size:13px;line-height:1.7;margin:0}
+    #home .v15-progress{margin-top:12px;padding:7px 12px}
+    #home .v15-steps{gap:9px}
+    #home .v15-step,#home .v15-card{padding:16px 17px;border-radius:18px;margin-bottom:10px}
+    #home #v154Guide{margin-top:10px!important}
+    #home .v15-step h2,#home .v15-card h2{margin:6px 0;font-size:18px;line-height:1.45}
+    #home .v15-card p,#home .v15-step p{margin:6px 0 9px;line-height:1.65}
+    #home .v15-actions{margin-top:10px;gap:8px}
+    #home .v15-card label{margin:12px 0 6px}
+    #home .v15-btn,#home .v15-secondary{padding:11px 13px}
+    #home .v15-panel{margin-top:10px;padding:13px}
+    #home .v15-footer{padding:12px 8px 18px}
+    @media(max-width:560px){
+      #home .v15-hero{padding:20px 16px 17px}
+      #home .v15-step,#home .v15-card{padding:15px;margin-bottom:9px}
+      #home .v15-steps{gap:7px}
+    }
 </style>
 
 
@@ -434,7 +457,7 @@
 
 <div id="welcome" class="welcome" style="display:none">
   <div class="welcome-inner">
-    <div class="welcome-mark">LING｜找到你的品牌</div>
+    <div class="welcome-mark">LING 靈感製造機</div>
     <h2>你不是沒有特色，<br>只是還沒看見自己的價值。</h2>
     <p>不用變成別人喜歡的樣子。從你的故事開始，找到屬於你的內容方向與品牌光芒。</p>
     <button class="cta" onclick="closeWelcome()">開始探索我的品牌 →</button>
@@ -443,13 +466,13 @@
 
 <div class="app">
   <header class="topbar">
-    <div class="brand">LING｜找到你的品牌</div>
+    <div class="brand">LING 靈感製造機</div>
     <div class="tiny">@ling_02_02</div>
   </header>
 
   
 <section id="home" class="page active">
-<div class="v15-hero"><span class="v15-tag">LING · GUIDED GROWTH</span><h1>不用先想好答案。<br>我們從你開始。🤎</h1><p>選擇你目前最需要的方向，一鍵複製指令，讓你常用的 AI 一題一題陪你探索。完成後將結果存回 LING，再接力到下一階段。</p><div class="v15-progress" id="v15Progress">已完成 0 / 5 階段</div></div>
+<div class="v15-hero"><span class="v15-tag">LING · GUIDED GROWTH</span><h1>LING 靈感製造機</h1><p class="ling-brand-tagline">從認識自己開始，把想法變成可能。</p><p class="ling-brand-explainer">透過 AI 引導，探索個人優勢、找到定位、建立內容方向，把想法轉化成實際行動。</p><div class="v15-progress" id="v15Progress">已完成 0 / 5 階段</div></div>
 <div class="v15-card" id="v154Guide" style="margin-top:16px"><span class="v15-tag">START HERE · 3 STEPS</span><h2>第一次使用？3 步驟就開始 🤎</h2><p>① 選擇「探索自己」，複製指令貼到 AI。<br>② AI 最多問 5 題，完成後複製「階段成果摘要」。<br>③ 回到 LING 貼上並儲存，直接前往下一階段。</p><p style="font-size:13px;opacity:.8">不用一次完成五個階段；每次先做一小步就好。請避免提供身分證、住址等敏感資訊。</p><button class="v15-secondary" onclick="v154DismissGuide()">我知道怎麼開始了 ✓</button></div>
 <div id="v15Steps" class="v15-steps"></div>
 
