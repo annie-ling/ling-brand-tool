@@ -136,7 +136,7 @@
     .bottom-nav{
       position:fixed;bottom:0;left:0;right:0;z-index:40;
       max-width:760px;margin:auto;
-      display:grid;grid-template-columns:repeat(8,1fr);
+      display:grid;grid-template-columns:repeat(6,minmax(0,1fr));
       background:rgba(255,253,251,.97);backdrop-filter:blur(16px);
       border-top:1px solid var(--line);padding:8px 6px calc(8px + env(safe-area-inset-bottom))
     }
@@ -392,6 +392,32 @@
       #home .v15-hero{padding:20px 16px 17px}
       #home .v15-step,#home .v15-card{padding:15px;margin-bottom:9px}
       #home .v15-steps{gap:7px}
+    }
+
+    /* V15.6: six tabs, six equal columns — no two empty spaces at the right. */
+    .bottom-nav.v12-nav{
+      display:grid;
+      grid-template-columns:repeat(6,minmax(0,1fr));
+      gap:0;
+      align-items:stretch;
+      width:100%;
+      box-sizing:border-box;
+      padding:6px 5px calc(6px + env(safe-area-inset-bottom));
+    }
+    .bottom-nav.v12-nav button{
+      min-width:0;
+      width:100%;
+      padding:7px 1px;
+      margin:0;
+      line-height:1.3;
+      white-space:nowrap;
+      font-size:11px;
+      text-align:center;
+    }
+    .bottom-nav.v12-nav .icon{font-size:19px;margin-bottom:3px}
+    @media(max-width:390px){
+      .bottom-nav.v12-nav{padding-left:3px;padding-right:3px}
+      .bottom-nav.v12-nav button{font-size:10px}
     }
 </style>
 
